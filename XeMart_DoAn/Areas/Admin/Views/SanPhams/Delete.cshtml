@@ -1,0 +1,169 @@
+﻿@model XeMart_DoAn.Models.SanPham
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h2>Delete</h2>
+
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>SanPham</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.DanhMucSP.TenDM)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DanhMucSP.TenDM)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.HangSanXuat.TenHSX)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.HangSanXuat.TenHSX)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MauSac.TenMau)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MauSac.TenMau)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TenSP)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TenSP)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Gia)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Gia)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TinhTrang)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TinhTrang)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.HinhAnh)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.HinhAnh)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ManHinh)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ManHinh)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.HDH)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.HDH)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CPU)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CPU)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Camera)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Camera)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Pin)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Pin)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Ram)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Ram)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BoNhoTrong)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BoNhoTrong)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TheNhoNgoai)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TheNhoNgoai)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CameraTruoc)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CameraTruoc)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SoLuongTon)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SoLuongTon)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+}
+@if (ViewBag.Error != null)
+{
+<br />
+                <div class="alert  alert-danger" role="alert">@ViewBag.Error</div>}

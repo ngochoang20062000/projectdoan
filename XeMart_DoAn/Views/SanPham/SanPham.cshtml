@@ -1,0 +1,123 @@
+﻿@model XeMart_DoAn.Models.SanPham
+
+@{ ViewBag.Title = "SanPham";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<XeMart_DoAn.Models.SanPham> abc = ViewBag.sp; }
+
+<div class="page-title shop-page-title product-page-title">
+    <div class="page-title-inner flex-row medium-flex-wrap container">
+        <div class="flex-col flex-grow medium-text-center">
+            <div class="is-small">
+                <nav class="woocommerce-breadcrumb breadcrumbs uppercase"><a href="@Url.Action("Index", "Home")">Trang chủ</a> <span class="divider">&#47;</span> <a href="@Url.Action("XemSanPhamTheoDanhMuc", "SanPham", new { id = ViewBag.ma })">@ViewBag.TenDM</a></nav>
+            </div>
+        </div>
+
+        <div class="flex-col medium-text-center">
+        </div>
+    </div>
+</div>
+<div class="shop-container">
+
+
+    <div class="container">
+        @if (ViewBag.ThongBao != null)
+        {
+            <div class="woocommerce-message message-wrapper">
+                <div class="message-container container success-color medium-text-center">
+                    <i class="icon-checkmark"></i>@ViewBag.ThongBao
+                </div>
+            </div>}
+    </div>
+    @{ string ImagePath = "~/wwwroot/images/" + Model.HinhAnh;
+
+    }
+    <table style="width:100%">
+        <tr>
+            <td>
+                <a href="@Url.Content(ImagePath)">
+                    <img width="510" height="510" src="@Url.Content(ImagePath)" class="lazy-load wp-post-image skip-lazy"
+                         alt="" loading="lazy" title="bo-hoang-cung-Danxuenilan-5in1-chinh-hang"
+                         sizes="(max-width: 510px) 100vw, 510px" />
+                </a>
+            </td>
+            <td>
+                <p style="font-size:40px">@Html.DisplayFor(Model => Model.TenSP)</p>
+                <br />
+
+                <p>
+                    @*<h1>
+                        
+                    </h1>*@
+                    <h4>Giá: @String.Format("{0:#,###}", Model.Gia)</h4>
+                </p>
+                
+                    
+                
+
+                @if (Model.SoLuongTon > 0)
+                {
+                    <p><strong>Tình trạng:</strong> Còn hàng</p>}
+                @if (Model.SoLuongTon == 0)
+                {
+                    <p><strong>Tình trạng:</strong> Hết hàng</p>}
+                <br />
+                <form class="cart mb-2" method="post" enctype='multipart/form-data' action="@Url.Action("ThemSP", "GioHang", new { MaSP = Model.MaSP })">
+
+                    <div class="col-md-3 pt-3 ml-2" style="display: none">Số lượng</div>
+                    <div class="col-md-5 quantity buttons_added" style="display: none">
+                        <input type="button" value="-" class="minus button is-form">
+                        <input type="number" id="quantity_60d19c138f0b1" class="input-text qty text" step="1" min="1"
+                               max="@Model.SoLuongTon" name="SoLuong" value="1" title="SL" size="4" placeholder=""
+                               inputmode="numeric" readonly />
+                        <input type="button" value="+" class="plus button is-form">
+                    </div>
+              
+                    
+                    <button type="submit" name="add-to-cart" value="6932" class="single_add_to_cart_button button alt" style="width: 200px; height: 40px; background-color: #f59000; color: white; font-size: 14px; border: 0; cursor: pointer; ">
+                        Thêm vào giỏ hàng
+
+                    </button>
+
+                </form>
+                <br />
+                <p><i class="icondetail-tick"></i> Cam kết không bán hàng không rõ nguồn gốc, xuất xứ</p>
+                <p><i class="icondetail-tick"></i> Cam kết: Hình ảnh sản phẩm được chụp từ mẫu thực.</p>
+            <br />
+                <p style="font-size:20px">Cam Kết Mua Hàng</p>
+                <br />
+                <p><i class="icondetail-tick" aria-hidden="true"></i> Cam kết 100% hàng chính hãng.</p> 
+                <p><i class="icondetail-tick" aria-hidden="true"></i> Nhân viên tư vấn tận tình, chu đáo.</p>
+                <p><i class="icondetail-tick" aria-hidden="true"></i> Xem hàng kiểm tra hàng trước khi thanh toán. </p>
+                <p><i class="icondetail-tick" aria-hidden="true"></i> Cam kết bồi hoàn 200% nếu sản phẩm kém chất lượng,ko rõ nguồn gốc .</p>
+               <br />
+                
+                <p style="font-size:20px">Đơn vị vận chuyển</p>
+                <br />
+                <img src="~/wwwroot/images/giao-hang.jpg" width="300">
+            </td>
+        </tr>
+        <tr><td></td>
+            <td>
+                <p style="font-size:20px">Cấu hình điện thoại @Html.DisplayFor(Model => Model.TenSP)</p>
+                <br />
+                <p>Màn hình: @Html.DisplayFor(Model => Model.ManHinh)</p>
+                <p>Hệ điều hành: @Html.DisplayFor(Model => Model.HDH)</p>
+                <p>Camera sau: @Html.DisplayFor(Model => Model.Camera)</p>
+                <p>Camera trước: @Html.DisplayFor(Model => Model.CameraTruoc)</p>
+                <p>RAM: @Html.DisplayFor(Model => Model.Ram)</p>
+                <p>Bộ nhớ trong: @Html.DisplayFor(Model => Model.BoNhoTrong)</p>
+                <p>Pin: @Html.DisplayFor(Model => Model.Pin)</p>
+                <p>Thẻ nhớ ngoài: @Html.DisplayFor(Model => Model.TheNhoNgoai)</p>
+            </td>
+            
+        </tr>
+
+    </table>
+
+</div>
+<script type='text/javascript' id='flatsome-js-js-extra'>
+            /* <![CDATA[ */
+            var flatsomeVars = { "ajaxurl": "https:\/\/lamdepz.com\/wp-admin\/admin-ajax.php", "rtl": "", "sticky_height": "45", "lightbox": { "close_markup": "<button title=\"%title%\" type=\"button\" class=\"mfp-close\"><svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-x\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"><\/line><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"><\/line><\/svg><\/button>", "close_btn_inside": false }, "user": { "can_edit_pages": false }, "i18n": { "mainMenu": "Main Menu" }, "options": { "cookie_notice_version": "1" } };
+            /* ]]> */
+    </script>
+
