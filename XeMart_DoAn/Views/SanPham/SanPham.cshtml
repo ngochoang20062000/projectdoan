@@ -3,7 +3,7 @@
 @{ ViewBag.Title = "SanPham";
     Layout = "~/Views/Shared/_Layout.cshtml";
     List<XeMart_DoAn.Models.SanPham> abc = ViewBag.sp; }
-
+<div class="watched"></div>
 <div class="page-title shop-page-title product-page-title">
     <div class="page-title-inner flex-row medium-flex-wrap container">
         <div class="flex-col flex-grow medium-text-center">
@@ -16,6 +16,7 @@
         </div>
     </div>
 </div>
+<br />
 <div class="shop-container">
 
 
@@ -46,13 +47,13 @@
 
                 <p>
                     @*<h1>
-                        
-                    </h1>*@
+
+                        </h1>*@
                     <h4>Giá: @String.Format("{0:#,###}", Model.Gia)</h4>
                 </p>
-                
-                    
-                
+
+
+
 
                 @if (Model.SoLuongTon > 0)
                 {
@@ -71,8 +72,8 @@
                                inputmode="numeric" readonly />
                         <input type="button" value="+" class="plus button is-form">
                     </div>
-              
-                    
+
+
                     <button type="submit" name="add-to-cart" value="6932" class="single_add_to_cart_button button alt" style="width: 200px; height: 40px; background-color: #f59000; color: white; font-size: 14px; border: 0; cursor: pointer; ">
                         Thêm vào giỏ hàng
 
@@ -82,21 +83,22 @@
                 <br />
                 <p><i class="icondetail-tick"></i> Cam kết không bán hàng không rõ nguồn gốc, xuất xứ</p>
                 <p><i class="icondetail-tick"></i> Cam kết: Hình ảnh sản phẩm được chụp từ mẫu thực.</p>
-            <br />
+                <br />
                 <p style="font-size:20px">Cam Kết Mua Hàng</p>
                 <br />
-                <p><i class="icondetail-tick" aria-hidden="true"></i> Cam kết 100% hàng chính hãng.</p> 
+                <p><i class="icondetail-tick" aria-hidden="true"></i> Cam kết 100% hàng chính hãng.</p>
                 <p><i class="icondetail-tick" aria-hidden="true"></i> Nhân viên tư vấn tận tình, chu đáo.</p>
                 <p><i class="icondetail-tick" aria-hidden="true"></i> Xem hàng kiểm tra hàng trước khi thanh toán. </p>
                 <p><i class="icondetail-tick" aria-hidden="true"></i> Cam kết bồi hoàn 200% nếu sản phẩm kém chất lượng,ko rõ nguồn gốc .</p>
-               <br />
-                
+                <br />
+
                 <p style="font-size:20px">Đơn vị vận chuyển</p>
                 <br />
                 <img src="~/wwwroot/images/giao-hang.jpg" width="300">
             </td>
         </tr>
-        <tr><td></td>
+        <tr>
+            <td></td>
             <td>
                 <p style="font-size:20px">Cấu hình điện thoại @Html.DisplayFor(Model => Model.TenSP)</p>
                 <br />
@@ -109,15 +111,14 @@
                 <p>Pin: @Html.DisplayFor(Model => Model.Pin)</p>
                 <p>Thẻ nhớ ngoài: @Html.DisplayFor(Model => Model.TheNhoNgoai)</p>
             </td>
-            
+
         </tr>
 
     </table>
 
 </div>
-<script type='text/javascript' id='flatsome-js-js-extra'>
-            /* <![CDATA[ */
-            var flatsomeVars = { "ajaxurl": "https:\/\/lamdepz.com\/wp-admin\/admin-ajax.php", "rtl": "", "sticky_height": "45", "lightbox": { "close_markup": "<button title=\"%title%\" type=\"button\" class=\"mfp-close\"><svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-x\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"><\/line><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"><\/line><\/svg><\/button>", "close_btn_inside": false }, "user": { "can_edit_pages": false }, "i18n": { "mainMenu": "Main Menu" }, "options": { "cookie_notice_version": "1" } };
-            /* ]]> */
-    </script>
+
+    
+
+
 

@@ -19,6 +19,7 @@
                             <i class="mdi mdi-home text-muted hover-cursor"></i>
                             <p class="text-muted mb-0 hover-cursor">&nbsp;/&nbsp;Quản lý sản phẩm&nbsp;&nbsp;</p>
                         </div>
+                        
                     </div>
                 </div>
             </div>
@@ -33,27 +34,12 @@
                             Danh sách sản phẩm
                         </h4>
                     </div>
-                    <div class="flex-col medium-text-center">
-                        <p class="woocommerce-result-count hide-for-medium">
-                            Lọc theo
-                        </p>
+                    <form method="post" action="@Url.Action("TimKiem", "SanPhams")" class="header__search">
+                        <label for="site-search">Tìm kiếm:</label>
+                        <input type="search" id="site-search" placeholder="Nhập từ khóa tìm kiếm..." name="strSearch" style="width:250px;margin-left:10px;border-radius:10px">
 
-                        <form class="woocommerce-ordering" method="post" enctype='multipart/form-data' action="@Url.Action("Index","SanPhams")">
-                            <select name="maHSX" class="orderby" aria-label="Đơn hàng của cửa hàng">
-                                <option name="maHSX" value="macdinh" selected="selected">Thứ tự mặc định</option>
-                                @foreach (var item in hsx)
-                                {
-                                    if (item.MaHSX.ToString().Equals(ViewBag.MaHSX))
-                                    {
-                    <option name="maHSX" value="@item.MaHSX" selected="selected">@item.TenHSX</option> }
-                                    else
-                                    {
-                    <option name="maHSX" value="@item.MaHSX" a>@item.TenHSX</option>}
-                                }
-                            </select>
+                        <button style="background-color: #28a745; color: white;border-radius:10px" type="submit">Search</button>
                         </form>
-                    </div>
-
                 </div>
 
                 <a class="" href="@Url.Action("Create","SanPhams")">

@@ -1,0 +1,89 @@
+﻿@model PagedList.IPagedList<XeMart_DoAn.Models.SanPham>
+@using PagedList.Mvc;
+@{ ViewBag.Title = "TimKiem";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+
+@if (ViewBag.Thongbao != null)
+{
+@ViewBag.Thongbao;
+}
+else
+{
+<ul style="list-style: none; display: flex;flex-wrap:wrap;margin-left:20px;background-color:white;">
+    @foreach (var item in Model)
+    {
+
+<li style="margin: 10px; width: 230px; border: groove; border-radius: 10px ">
+    <div style="font-size:20px;margin-top:5px;margin-left:10px">
+        <a href="" style="text-decoration:none">
+            @Html.DisplayFor(modelItem => item.DanhMucSP.TenDM)
+        </a><br />
+        <a href="" style="text-decoration: none; font-size: 16px; color: #5677fc">
+            @item.TenSP
+        </a>
+    </div>
+    <div>
+        <a href="" style="text-decoration:none">
+            @{ string ImagePath = "~/wwwroot/images/" + item.HinhAnh; }
+            <img src="@Url.Content(ImagePath)" class="main-img" style="margin-left:30px;width:170px;height:170px;margin-top:10px" />
+        </a>
+    </div>
+
+    <div>
+        <img src="~/wwwroot/images/sao.png" style="width: 50px; height: 30px; margin-left: 10px" />
+    </div>
+    <div style="font-size: 14px; margin-left: 10px">
+        <span>
+            @Html.DisplayFor(modelItem => item.Gia)$
+        </span>
+        <span>
+
+            <a href=""><img src="~/wwwroot/images/icongh1.png" style="display: block; width: 30px;margin: 10px 10px;float:right" /></a>
+            <img src="~/wwwroot/images/traitim.png" style="display: block; width: 50px;margin: 2px 5px;float:right" />
+        </span>
+
+    </div>
+    <br />
+</li>}
+</ul>
+                <div class="container">
+                    <nav class="woocommerce-pagination">
+                        @Html.PagedListPager(Model, page => Url.Action("TimKiem", new { ViewBag.strSearch, page }), new PagedListRenderOptions()
+                        {
+                            LiElementClasses = new string[] { "page-number" },
+                            UlElementClasses = new string[] { "page-numbers", "nav-pagination", "links", "text-center" }
+                        })
+
+
+                    </nav>
+                </div>}
+
+<style>
+    .pagination-container ul {
+        text-align: center;
+        display: flex;
+    }
+
+        .pagination-container ul li {
+            text-align: center;
+            width: 60px;
+            border-color: gainsboro;
+            margin: 0px;
+            padding: 10px 10px;
+            height: 40px;
+            border-radius: 20px;
+        }
+
+            .pagination-container ul li:hover {
+                background-color: orange;
+            }
+
+    .active a {
+        color: white;
+    }
+
+    .active {
+        background-color: cornflowerblue;
+    }
+</style>

@@ -4,7 +4,7 @@
                 Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml"; }
 
 <div class="content-wrapper" style="margin-left:140px">
-    <div class="row">
+    <div class="row col-xl-12 ml-1">
         <div class="col-md-12 grid-margin">
             <div class="d-flex justify-content-between flex-wrap">
                 <div class="d-flex align-items-end flex-wrap">
@@ -19,15 +19,14 @@
             </div>
         </div>
     </div>
-    <div class="col-12 grid-margin">
+    <div class="col-xl-12 grid-margin">
         <div class="card" style="width:1000px">
             <div class="card-body">
-                <h4 class="card-title">Thông tin chi tiết sản phẩm</h4>
                 <form class="form-sample">
-                    <div class="row">
+                    <div class="row col-xl-12 ml-1">
                         <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">@Html.LabelFor(model => model.HinhAnh):</label>
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-3 col-form-label">Hình ảnh:</label>
                                 <div class="col-sm-9">
                                     @{ //Lấy đường dẫn file ảnh
                                         string ImagePath = "~/wwwroot/images/" + Model.HinhAnh; }
@@ -36,107 +35,107 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">@Html.LabelFor(model => model.DanhMucSP.TenDM):</label>
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-3 col-form-label">Tên DM:</label>
                                 <div class="col-sm-9">
                                     <label class="col-form-label"> @Html.DisplayFor(model => model.DanhMucSP.TenDM)</label>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row col-xl-12 ml-1">
                         <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">@Html.LabelFor(model => model.Gia):</label>
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-3 col-form-label">Giá:</label>
                                 <div class="col-sm-9">
                                     <label class="col-form-label">@String.Format("{0:#,###}", Model.Gia) đ</label>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">@Html.LabelFor(model => model.TenSP):</label>
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-3 col-form-label">Tên sản phẩm:</label>
                                 <div class="col-sm-9">
                                     <label class="col-form-label">  @Html.DisplayFor(model => model.TenSP)</label>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row col-xl-12 ml-1">
                         <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">@Html.LabelFor(model => model.SoLuongTon):</label>
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-3 col-form-label">Số lượng tồn:</label>
                                 <div class="col-sm-9">
                                     <label class="col-form-label">@Html.DisplayFor(model => model.SoLuongTon)</label>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">@Html.LabelFor(model => model.HangSanXuat.TenHSX):</label>
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-3 col-form-label">Tên HSX:</label>
                                 <div class="col-sm-9">
                                     <label class="col-form-label">@Html.DisplayFor(model => model.HangSanXuat.TenHSX)</label>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row col-xl-12 ml-1">
                         <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">@Html.LabelFor(model => model.TinhTrang):</label>
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-3 col-form-label">Tình trạng:</label>
                                 <div class="col-sm-9">
                                     <label class="col-form-label">@Html.DisplayFor(model => model.TinhTrang)</label>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">@Html.LabelFor(model => model.ManHinh):</label>
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-3 col-form-label">Màn hình:</label>
                                 <div class="col-sm-9">
                                     <label class="col-form-label">@Html.DisplayFor(model => model.ManHinh)</label>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row col-xl-12 ml-1">
                         <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">@Html.LabelFor(model => model.HDH):</label>
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-3 col-form-label">HĐH:</label>
                                 <div class="col-sm-9">
                                     <label class="col-form-label"> @Html.DisplayFor(model => model.HDH)</label>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">@Html.LabelFor(model => model.CPU):</label>
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-3 col-form-label">CPU:</label>
                                 <div class="col-sm-9">
                                     <label class="col-form-label">@Html.DisplayFor(model => model.CPU)</label>
                                 </div>
                             </div>
                         </div>
-                    </div><div class="row">
+                    </div><div class="row col-xl-12 ml-1">
                         <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">@Html.LabelFor(model => model.Camera):</label>
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-3 col-form-label">Camera:</label>
                                 <div class="col-sm-9">
                                     <label class="col-form-label">@Html.DisplayFor(model => model.Camera)</label>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">@Html.LabelFor(model => model.Pin):</label>
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-3 col-form-label">Pin:</label>
                                 <div class="col-sm-9">
                                     <label class="col-form-label">@Html.DisplayFor(model => model.Pin)</label>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row col-xl-12 ml-1">
                         <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">@Html.LabelFor(model => model.Ram):</label>
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-3 col-form-label">Ram:</label>
                                 <div class="col-sm-9">
                                     <label class="col-form-label">@Html.DisplayFor(model => model.Ram)</label>
                                 </div>
@@ -144,33 +143,33 @@
                         </div>
 
                         <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">@Html.LabelFor(model => model.BoNhoTrong):</label>
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-3 col-form-label">Bộ nhớ trong:</label>
                                 <div class="col-sm-9">
                                     <label class="col-form-label">@Html.DisplayFor(model => model.BoNhoTrong)</label>
                                 </div>
                             </div>
                         </div>
-                    </div><div class="row">
+                    </div><div class="row col-xl-12 ml-1">
                         <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">@Html.LabelFor(model => model.TheNhoNgoai):</label>
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-3 col-form-label">Thẻ nhớ ngoài:</label>
                                 <div class="col-sm-9">
                                     <label class="col-form-label">@Html.DisplayFor(model => model.TheNhoNgoai)</label>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">@Html.LabelFor(model => model.CameraTruoc):</label>
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-3 col-form-label">Camera trước:</label>
                                 <div class="col-sm-9">
                                     <label class="col-form-label"> @Html.DisplayFor(model => model.CameraTruoc)</label>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">@Html.LabelFor(model => model.MaMau):</label>
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-3 col-form-label">Tên màu:</label>
                                 <div class="col-sm-9">
                                     <label class="col-form-label"> @Html.DisplayFor(model => model.MauSac.TenMau)</label>
                                 </div>

@@ -12,12 +12,30 @@ namespace XeMart_DoAn.Controllers
     public class HomeController : Controller
     {
         DienThoai db = new DienThoai();
-        public ActionResult Index(int? page, string id)
+        public ActionResult Index(int? page, string id, string loc)
         {
             List<SanPham> dienthoais = new List<SanPham>();           
             dienthoais = db.SanPhams.Select(ma => ma).ToList();
+
+            var sanpham = db.SanPhams.Where(s => s.MaDM.ToString().Equals(id)).Select(s => s);
+
+            if (loc != null)
+            {
+                if (loc.Equals("tang"))
+                {
+                    dienthoais = db.SanPhams.Select(ma => ma).OrderBy(s=> s.Gia).ToList();
+                    ViewBag.Loc = loc;
+                }
+                else if (loc.Equals("giam"))
+                {
+                    dienthoais = db.SanPhams.Select(ma => ma).OrderByDescending(s => s.Gia).ToList();
+                    ViewBag.Loc = loc;
+                }
+            }
+
             int pageSize = 20;
             int pageNumber = (page ?? 1);
+            
             return View(dienthoais.ToPagedList(pageNumber, pageSize));
         }
         
@@ -26,7 +44,7 @@ namespace XeMart_DoAn.Controllers
             var sanpham = db.SanPhams.ToList();
             if (strSearch != null)
             {
-                sanpham = db.SanPhams.Where(s => s.TenSP.ToUpper().Trim().Contains(strSearch.ToUpper().Trim())).ToList();
+                sanpham = db.SanPhams.Where(s => s.TenSP.ToUpper().Trim().Contains(strSearch.ToUpper().Trim()) || s.Gia.ToString().Contains(strSearch.ToUpper().Trim())).ToList();
             }
             ViewBag.strSearch = strSearch;
             if (sanpham.Count > 0)

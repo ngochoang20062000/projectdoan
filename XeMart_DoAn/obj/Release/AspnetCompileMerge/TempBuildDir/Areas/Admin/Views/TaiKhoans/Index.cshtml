@@ -1,0 +1,148 @@
+﻿@model PagedList.IPagedList<XeMart_DoAn.Models.TaiKhoan>
+@using PagedList.Mvc;
+
+@{ ViewBag.Title = "Index";
+                Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml"; @*<link herf="~/Content/PagedList.css" rel="stylesheet" type="text/css" />*@ }
+
+
+<div class="content-wrapper" style="margin-left:10px">
+    <div class="row">
+        <div class="col-md-12 grid-margin">
+            <div class="d-flex justify-content-between flex-wrap">
+                <div class="d-flex align-items-end flex-wrap">
+                    <div class="mr-md-3 mr-xl-5">
+                        <h2>Xin chào, Admin</h2>
+                        <div class="d-flex">
+                            <i class="mdi mdi-home text-muted hover-cursor"></i>
+                            <p class="text-muted mb-0 hover-cursor">&nbsp;/&nbsp;Quản lý tài khoản&nbsp;&nbsp;</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card" style="width:1300px">
+            <div class="card-body" >
+               
+                <a class="" href="@Url.Action("Create","TaiKhoans")">
+                    <span class="menu-title btn btn-primary">Thêm tài khoản</span>
+                </a>
+                @if (ViewBag.Error != null)
+                {
+
+    <div class="alert alert-danger mt-2">@ViewBag.Error</div>}
+                <div class="table-responsive pt-3">
+                    <table id="recent-purchases-listing" class="table text-center">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Mã tài khoản
+                                </th>
+                                <th>
+                                    Ảnh
+                                </th>
+                                <th>
+                                    Họ tên
+                                </th>
+                                <th>
+                                    Tên quyền
+                                </th>
+                                <th>
+                                    Địa chỉ Email
+                                </th>
+                                <th>
+                                    Địa chỉ
+                                </th>
+                                <th>
+                                    Số điện thoại
+                                </th>
+                                <th>
+                                    Tình trạng
+                                </th>
+                                <th>
+                                    Hành động
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaTK)
+                    </td>
+                    <td>
+                        @{ string ImagePath = "~/wwwroot/images/user1.jpg";
+
+                                            if (item.Anh != null && item.Anh != "")
+                                            {
+                                                ImagePath = "~/wwwroot/images/" + item.Anh;
+                                            } }
+                        <img src="@Url.Content(ImagePath)" width=" 100" height="100" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HoTen)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PhanQuyen.TenQuyen)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DiaChi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SoDienThoai)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TinhTrang)
+                    </td>
+                    <td>
+                        <div class="d-flex justify-content-center">
+                            <a class="nav-link" href="@Url.Action("Edit", "TaiKhoans", new { id = item.MaTK })">
+                                <span class="menu-title btn btn-wd btn-info pl-3 pr-3 pt-2 pb-2">Edit</span>
+                            </a>
+                            
+            <form class="d-flex align-items-center" id="account-@item.MaTK" method="post" action="@Url.Action("DeleteConfirmedCustom", "TaiKhoans", new { id = item.MaTK })">
+                <button type="submit" class="menu-title btn btn-wd btn-danger pl-3 pr-3 pt-2 pb-2" onclick="return functionConfirm(this,@item.MaTK)">Xóa</button>
+            </form>
+                        </div>
+                    </td>
+                </tr>}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions()
+    {
+        LiElementClasses = new string[] { "page-number" },
+        UlElementClasses = new string[] { "page-numbers", "nav-pagination", "links", "text-center" }
+    })
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<script type="text/javascript">function functionConfirm(event,id) {
+        swal({
+            title: 'Thông báo',
+            text: "Bạn chắc chắn muốn xóa tài khoản này",
+            type: 'warning',
+            showCancelButton: true,
+            cancelButtonText: 'Hủy',
+            cancelButtonClass: 'btn btn-danger',
+            showConfirmButton: true,
+            confirmButtonText: 'Đồng ý',
+            confirmButtonClass: 'btn btn-success'
+        }, function (isConfirm) {
+            if (isConfirm) {
+                $('#account-'+id).submit();
+                return true;
+            } else {
+                return false;
+            }
+        });
+        return false;
+    }</script>

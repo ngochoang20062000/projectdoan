@@ -30,15 +30,11 @@
                                                     <div class="col-12 grid-margin">
                                                         <div class="card">
                                                             <div class="card-body">
-                                                                <h4 class="card-title">Cập nhật danh mục</h4>
                                                                 <form class="form-sample">
-                                                                    <p class="card-description">
-                                                                        Nhập thông tin danh mục
-                                                                    </p>
                                                                     <div class="row">
                                                                         <div class="col-md-6">
                                                                             <div class="form-group row">
-                                                                                <label class="col-sm-3 col-form-label">@Html.LabelFor(model => model.MaDM)</label>
+                                                                                <label class="col-sm-3 col-form-label">Mã DM: </label>
                                                                                 <div class="col-sm-9">
                                                                                     <input type="text" class="form-control" disabled="true" />
                                                                                 </div>
@@ -46,7 +42,7 @@
                                                                         </div>
                                                                         <div class="col-md-6">
                                                                             <div class="form-group row">
-                                                                                <label class="col-sm-3 col-form-label">@Html.LabelFor(model => model.TenDM)</label>
+                                                                                <label class="col-sm-3 col-form-label">Tên DM: </label>
                                                                                 <div class="col-sm-9">
                                                                                     @Html.EditorFor(model => model.TenDM, new { htmlAttributes = new { @class = "form-control" } })
                                                                                     @Html.ValidationMessageFor(model => model.TenDM, "", new { @class = "text-danger" })

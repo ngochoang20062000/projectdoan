@@ -1,0 +1,54 @@
+﻿@{ ViewBag.Title = "Index";
+                Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml"; }
+
+<div class="col-lg-3 col-6">
+
+    <div class="small-box bg-info">
+        <div class="inner">
+            <h5>@String.Format("{0:#,###}", ViewBag.DoanhThu) VNĐ</h5>
+            <p>Doanh thu</p>
+        </div>
+        <div class="icon">
+            <i class="ion ion-bag"></i>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-3 col-6">
+
+    <div class="small-box bg-success">
+        <div class="inner">
+            <h5>@String.Format("{0:#,###}", ViewBag.TongSP)</h5>
+            <p>Tổng sản phẩm</p>
+        </div>
+        <div class="icon">
+            <i class="ion ion-stats-bars"></i>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-3 col-6">
+
+    <div class="small-box bg-warning">
+        <div class="inner">
+            <h5>@String.Format("{0:#,###}", ViewBag.SLBan)</h5>
+            <p>Số lượng bán</p>
+        </div>
+        <div class="icon">
+            <i class="ion ion-person-add"></i>
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-3 col-6">
+
+    <div class="small-box bg-danger">
+        <div class="inner">
+            <h5>@String.Format("{0:#,###}", ViewBag.SLKhach)</h5>
+            <p>Số lượng khách</p>
+        </div>
+        <div class="icon">
+            <i class="ion ion-pie-graph"></i>
+        </div>
+    </div>
+</div>

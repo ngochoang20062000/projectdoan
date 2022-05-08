@@ -55,5 +55,14 @@ namespace XeMart_DoAn.Controllers
             ViewBag.TenDM = s1[0].TenHSX;
             return View(sanphams);
         }
+        public ActionResult XemSanPhamTheoMauSac(string id)
+        {
+            var sanphams = db.SanPhams.Where(s => s.MaMau.ToString().Equals(id)).Select(s => s);
+            int mamau = int.Parse(id);
+            List<MauSac> s1 = new List<MauSac>();
+            s1 = db.MauSacs.Where(h => h.MaMau == mamau).ToList();
+            ViewBag.TenMau = s1[0].TenMau;
+            return View(sanphams);
+        }
     }
 }

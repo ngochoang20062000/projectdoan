@@ -6,44 +6,54 @@
     List<XeMart_DoAn.Models.SanPham> sp = (List<XeMart_DoAn.Models.SanPham>)ViewBag.SanPham;
     var ghiChu = Model.GhiChu;
     double tong = 0; }
+<style>
+    .col-form-label {
+        font-size: 20px;
+    }
 
-<main id="main" class="row d-flex justify-content-center align-items-center">
+    .col-md-6 {
+        margin-bottom: 10px;
+    }
+
+
+    th {
+        text-transform: none !important;
+    }
+</style>
+<div class="watched"></div>
+<main id="main" style="font-size:20px;margin-left:300px">
     <div class="col-12 grid-margin pt-5">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Thông tin chi tiết hóa đơn</h4>
+                <h4 class="col-form-label" style="margin-bottom:10px;font-size:30px;color:aqua">Thông tin chi tiết hóa đơn</h4>
                 <form class="form-sample">
 
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label"> @Html.DisplayNameFor(model => model.GioHang.MaGioHang)</label>
                                 <div class="col-sm-8">
-                                    <label class="col-form-label">: @Html.DisplayFor(model => model.MaGioHang)</label>
+                                    <label class="col-form-label">Mã giỏ hàng: @Html.DisplayFor(model => model.MaGioHang)</label>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">@Html.DisplayNameFor(model => model.NgayTao)</label>
                                 <div class="col-sm-8">
-                                    <label class="col-form-label">: @Html.DisplayFor(model => model.NgayTao)</label>
+                                    <label class="col-form-label">Ngày tạo: @Html.DisplayFor(model => model.NgayTao)</label>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label"> @Html.DisplayNameFor(model => model.TinhTrang)</label>
                                 <div class="col-sm-8">
-                                    <label class="col-form-label">: @Html.DisplayFor(model => model.TinhTrang)</label>
+                                    <label class="col-form-label">Tình trạng: @Html.DisplayFor(model => model.TinhTrang)</label>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">@Html.DisplayNameFor(model => model.SoDienThoai)</label>
                                 <div class="col-sm-8">
-                                    <label class="col-form-label">: @Html.DisplayFor(model => model.SoDienThoai)</label>
+                                    <label class="col-form-label">Số điện thoại: @Html.DisplayFor(model => model.SoDienThoai)</label>
                                 </div>
                             </div>
                         </div>
@@ -54,18 +64,16 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">@Html.DisplayNameFor(model => model.HinhThucVanChuyen)</label>
                                 <div class="col-sm-8">
-                                    <label class="col-form-label">: @Html.DisplayFor(model => model.HinhThucVanChuyen)</label>
+                                    <label class="col-form-label">Hình thức vận chuyển: @Html.DisplayFor(model => model.HinhThucVanChuyen)</label>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">@Html.DisplayNameFor(model => model.HinhThucThanhToan)</label>
                                 <div class="col-sm-8">
-                                    <label class="col-form-label">: @Html.DisplayFor(model => model.HinhThucThanhToan)</label>
+                                    <label class="col-form-label">Hình thức thanh toán: @Html.DisplayFor(model => model.HinhThucThanhToan)</label>
                                 </div>
                             </div>
                         </div>
@@ -77,17 +85,15 @@
 
                         <div class="col-md-6">
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">@Html.DisplayNameFor(model => model.HoTen)</label>
                                 <div class="col-sm-8">
-                                    <label class="col-form-label">: @Html.DisplayFor(model => model.HoTen)</label>
+                                    <label class="col-form-label">Họ tên: @Html.DisplayFor(model => model.HoTen)</label>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group row">
-                                <label class="col-sm-4 col-form-label">@Html.DisplayNameFor(model => model.DiaChi)</label>
                                 <div class="col-sm-8">
-                                    <label class="col-form-label">: @Html.DisplayFor(model => model.DiaChi)</label>
+                                    <label class="col-form-label">Địa chỉ: @Html.DisplayFor(model => model.DiaChi)</label>
                                 </div>
                             </div>
                         </div>
@@ -96,9 +102,8 @@
                         {
             <div class="col-md-6">
                 <div class="form-group row">
-                    <label class="col-sm-4 col-form-label">@Html.DisplayNameFor(model => model.GhiChu)</label>
                     <div class="col-sm-8">
-                        <label class="col-form-label">: @Html.DisplayFor(model => model.GhiChu)</label>
+                        <label class="col-form-label">Ghi chú: @Html.DisplayFor(model => model.GhiChu)</label>
                     </div>
                 </div>
             </div>}
@@ -106,7 +111,7 @@
 
                     <table id="recent-purchases-listing" class="table">
                         <thead>
-                            <tr>
+                            <tr style="background-color:darkturquoise;height:30px">
                                 <th>
                                     Tên sản phẩm
                                 </th>
@@ -140,8 +145,8 @@
                     <td>
                         <ins><span class="woocommerce-Price-amount amount"><bdi>@String.Format("{0:#,###}", item.Gia) <span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></ins>
                     </td>
-                    <td>
-                        @item.SoLuongTon   @*Biến số lượng *@
+                    <td style="padding-left:40px">
+                        @item.SoLuongTon   
                     </td>
                     <td>
                         <ins><span class="woocommerce-Price-amount amount"><bdi>@String.Format("{0:#,###}", (item.Gia * item.SoLuongTon)) <span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></ins>
@@ -149,15 +154,17 @@
                 </tr>}
                         </tbody>
                     </table>
+                    <br />
                     <div class="row justify-end mt-3">
                         <div class="col-md-3">
                             Tổng tiền :
                             <ins><span class="woocommerce-Price-amount amount" style="font-size:25px"><bdi>@String.Format("{0:#,###}", tong) <span class="woocommerce-Price-currencySymbol">&#8363;</span></bdi></span></ins>
                         </div>
                     </div>
-                    <div class="d-flex justify-content-center">
+                    <br />
+                    <div class="d-flex justify-content-center" style="margin-top:10px">
                         @{ string link = "/GioHang/XemHoaDon/" + Session["idUser"]; }
-                        <a class="nav-link" href="@Url.Content(link)">
+                        <a class="nav-link" href="@Url.Content(link)" >
                             <span class="menu-title btn btn-outline-primary btn-fw ">Quay lại</span>
                         </a>
                     </div>
@@ -167,8 +174,4 @@
     </div>
 </main>
 
-<style>
-    th {
-        text-transform: none !important;
-    }
-</style>
+

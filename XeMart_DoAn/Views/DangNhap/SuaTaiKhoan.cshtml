@@ -2,13 +2,27 @@
 
 @{ ViewBag.Title = "SuaTaiKhoan";
                 Layout = "~/Views/Shared/_Layout.cshtml"; }
+<style>
+    .form-control {
+        height: 40px;
+        padding-left: 10px;
+        width: 300px;
+        border: 1px solid black;
+    }
 
+    .clp {
+        height: 40px;
+        padding-left: 10px;
+        width: 300px;
+        border: 1px solid black;
+    }
+</style>
+<div class="watched"></div>
 @using (Html.BeginForm("SuaTaiKhoan", "DangNhap", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
 
-    <main id="main" class="row d-flex justify-content-center align-items-center" style="width:900px">
-        <div class="col-md-6 mt-5">
-            <h2 style="margin-bottom: 20px;">Thông tin tài khoản</h2>
+        <div style="margin-left:450px">
+            <a style="margin-bottom: 20px;font-size:30px">Thông tin tài khoản</a>
 
             @Html.AntiForgeryToken()
 
@@ -16,8 +30,8 @@
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 @Html.HiddenFor(model => model.MaTK)
 
-                <div class="form-group" style="margin-left:20px">
-                    <div style="margin-left: 20px; float: left; font-size: 18px" for="Anh">Ảnh</div>
+                <div class="form-group" style="margin-left:20px;margin-top:10px">
+                    <div style="  font-size: 18px" for="Anh">Ảnh</div>
                     <div class="col-md-10">
                         @{ string image = "~/wwwroot/images/" + Model.Anh; }
                         <form action="" method="post" enctype="multipart/form-data">
@@ -34,40 +48,40 @@
                         @Html.ValidationMessageFor(model => model.Anh, "", new { @class = "text-danger" })
                     </div>
                 </div>
-                <div class="form-group">
-                    <div style="margin-left:25px;float:left;font-size:18px" for="Email">Email</div>
+                <div class="form-group" style="margin-top:10px">
+                    <div style="font-size:18px" for="Email">Email</div>
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <div style="margin-left: 25px; float: left; font-size: 18px" for="MatKhau">Mật Khẩu</div>
+                <div class="form-group" style="margin-top:10px">
+                    <div style="  font-size: 18px" for="MatKhau">Mật Khẩu</div>
                     <div class="col-md-10 input">
-                        @Html.TextBoxFor(model => model.MatKhau, htmlAttributes: new { type = "password" })
+                        @Html.TextBoxFor(model => model.MatKhau, htmlAttributes: new { type = "password" , @class="clp"})
                         @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <div style="margin-left: 25px; float: left; font-size: 18px" for="HoTen">Họ Tên</div>
+                <div class="form-group" style="margin-top:10px">
+                    <div style="  font-size: 18px" for="HoTen">Họ Tên</div>
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <div for="DiaChi" style="margin-left: 25px; float: left; font-size: 18px">Địa Chỉ</div>
+                <div class="form-group" style="margin-top:10px">
+                    <div for="DiaChi" style=" font-size: 18px">Địa Chỉ</div>
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <div for="SoDienThoai" style="margin-left: 25px; float: left; font-size: 18px">Số Điện Thoại</div>
+                <div class="form-group" style="margin-top:10px">
+                    <div for="SoDienThoai" style="  font-size: 18px">Số Điện Thoại</div>
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.SoDienThoai, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.SoDienThoai, "", new { @class = "text-danger" })
@@ -75,7 +89,7 @@
                 </div>
 
 
-                <div class="form-group" style="display:none">
+                <div class="form-group" style="display:none;margin-top:10px">
                     @Html.LabelFor(model => model.TinhTrang, htmlAttributes: new { @class = "col-md-4" })
                     <div class="col-md-10">
                         <div class="checkbox">
@@ -85,7 +99,7 @@
                     </div>
                 </div>
 
-                <div class="form-group" style="display:none">
+                <div class="form-group" style="display:none;margin-top:10px">
                     @Html.LabelFor(model => model.MaQuyen, "MaQuyen", htmlAttributes: new { @class = "col-md-4" })
                     <div class="col-md-10">
                         @Html.DropDownList("MaQuyen", null, htmlAttributes: new { @class = "form-control" })
@@ -93,18 +107,20 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" style="margin-top:10px;">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Lưu" class="btn btn-default col-md-4" style="background-color:red;font-size:18px" />
+                        <input type="submit" value="Lưu" class="btn btn-default col-md-4" style="cursor:pointer;width: 100px;height:30px;background-color:red; font-size: 18px; border: 0; color: white" />
                     </div>
                 </div>
             </div>
         </div>
-    </main>}
+    }
 
-<script>
+    <script>
     var loadFile = function (event) {
         var image = document.getElementById('output');
         image.src = URL.createObjectURL(event.target.files[0]);
     };
 </script>
+
+

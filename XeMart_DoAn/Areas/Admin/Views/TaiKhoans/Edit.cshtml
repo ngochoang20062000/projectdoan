@@ -16,7 +16,7 @@
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                 
                                 <div class="content-wrapper">
-                                    <div class="row">
+                                    <div class="row col-xl-12 ml-1">
                                         <div class="col-md-12 grid-margin">
                                             <div class="d-flex justify-content-between flex-wrap">
                                                 <div class="d-flex align-items-end flex-wrap">
@@ -31,17 +31,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 grid-margin">
+                                    <div class="col-xl-12 grid-margin">
                                         <div class="card">
                                             <div class="card-body">
-                                                <h4 class="card-title">Cập nhật thông tin tài khoản</h4>
                                                 <form class="form-sample">
-
-                                                    <div class="row">
+                                                    <div class="row col-xl-12 ml-1">
                                                         <div class="col-md-6">
-                                                            <div class="form-group row">
-
-                                                                <label class="col-sm-3 col-form-label">@Html.LabelFor(model => model.Anh)</label>
+                                                            <div class="form-group row col-xl-12 ml-1">
+                                                                <label class="col-sm-3 col-form-label">Ảnh</label>
                                                                 <div class="col-sm-9 d-flex justify-content-center align-items-center">
                                                                     <img id="output" class="img-rounded" alt="Ảnh" width="150" height="150"
                                                                          src="@Url.Content(ImagePath)" />
@@ -54,19 +51,20 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <div class="form-group row">
-                                                                <label class="col-sm-3 col-form-label">@Html.LabelFor(model => model.HoTen)</label>
+                                                            <div class="form-group row col-xl-12 ml-1">
+                                                                <label class="col-sm-3 col-form-label">Họ tên</label>
+
                                                                 <div class="col-md-9">
-                                                                    <input class="form-control text-box" name="HoTen" type="text"  id="HoTen" value="@Model.HoTen" data-val="true" data-val-required="Bạn chưa nhập họ tên">
+                                                                    <input class="form-control text-box" name="HoTen" type="text" id="HoTen" value="@Model.HoTen" data-val="true" data-val-required="Bạn chưa nhập họ tên">
                                                                     @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="row">
+                                                    <div class="row col-xl-12 ml-1">
                                                         <div class="col-md-6">
-                                                            <div class="form-group row">
-                                                                <label class="col-sm-3 col-form-label">@Html.LabelFor(model => model.Email)</label>
+                                                            <div class="form-group row col-xl-12 ml-1">
+                                                                <label class="col-sm-3 col-form-label">Email</label>
                                                                 <div class="col-md-9">
                                                                     <input class="form-control text-box single-line"  data-val="true" data-val-length="Độ dài email tối đa 50 ký tự" data-val-length-max="50" data-val-required="Bạn chưa nhập Email" id="Email" name="Email" type="text" value="@Model.Email">
                                                                     @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
@@ -74,9 +72,9 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <div class="form-group row">
+                                                            <div class="form-group row col-xl-12 ml-1">
                                                                 <label class="col-sm-3 col-form-label">
-                                                                    @Html.LabelFor(model => model.SoDienThoai)
+                                                                    Số điện thoại
                                                                 </label>
                                                                 <div class="col-md-9">
                                                                     <input class="form-control text-box single-line"  data-val="true" data-val-length="SỐ điện thoại có từ 10-12 ký tự" data-val-length-max="12" data-val-length-min="10" id="SoDienThoai" name="SoDienThoai" type="text" value="@Model.SoDienThoai">
@@ -86,10 +84,10 @@
                                                         </div>
 
                                                     </div>
-                                                    <div class="row">
+                                                    <div class="row col-xl-12 ml-1">
                                                         <div class="col-md-6">
-                                                            <div class="form-group row">
-                                                                <label class="col-md-3 col-form-label">@Html.LabelFor(model => model.DiaChi)</label>
+                                                            <div class="form-group row col-xl-12 ml-1">
+                                                                <label class="col-md-3 col-form-label">Địa chỉ</label>
                                                                 <div class="col-md-9">
                                                                     <input class="form-control text-box single-line"  id="DiaChi" name="DiaChi" type="text" value="@Model.DiaChi">
                                                                     @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
@@ -97,8 +95,8 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <div class="form-group row">
-                                                                <label class="col-md-3 col-form-label">@Html.LabelFor(model => model.MaQuyen, "Tên Quyền")</label>
+                                                            <div class="form-group row col-xl-12 ml-1">
+                                                                <label class="col-md-3 col-form-label">Quyền</label>
                                                                 <div class="col-md-9">
                                                                     @Html.DropDownList("MaQuyen", null, htmlAttributes: new { @class = "form-control" })
                                                                     @Html.ValidationMessageFor(model => model.MaQuyen, "", new { @class = "text-danger" })
@@ -106,10 +104,10 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="row">
+                                                    <div class="row col-xl-12 ml-1">
                                                         <div class="col-md-6">
-                                                            <div class="form-group row">
-                                                                <label class="col-md-3 col-form-label">@Html.LabelFor(model => model.MatKhau)</label>
+                                                            <div class="form-group row col-xl-12 ml-1">
+                                                                <label class="col-md-3 col-form-label">Mật khẩu</label>
                                                                 <div class="col-md-9 password">
                                                                     <input class="form-control text-box single-line" data-val="true"  data-val-length="Độ dài mật khẩu ít nhất 6 ký tự" data-val-length-max="20" data-val-length-min="6" data-val-required="Bạn chưa nhập Mật Khẩu" id="MatKhau" name="MatKhau" type="password" value="@Model.MatKhau">
                                                                     @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
@@ -117,8 +115,8 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <div class="form-group row">
-                                                                <label class="col-md-3 col-form-label">@Html.LabelFor(model => model.TinhTrang)</label>
+                                                            <div class="form-group row col-xl-12 ml-1">
+                                                                <label class="col-md-3 col-form-label">Tình trạng</label>
                                                                 <div class="col-md-9 align-items-center d-flex">
                                                                     <div class="checkbox align-self-center mb-3">
                                                                         @Html.EditorFor(model => model.TinhTrang)

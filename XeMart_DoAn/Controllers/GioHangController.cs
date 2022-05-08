@@ -98,9 +98,10 @@ namespace XeMart_DoAn.Controllers
             String thongbao = "Đã thêm " + sanpham.TenSP + " số lượng " + SoLuong + " vào giỏ hàng !";
             return RedirectToAction("SanPham", "SanPham", new { id = MaSP, ThongBao = thongbao });
         }
-
+        [HttpPost]
         public RedirectToRouteResult SuaSoLuong(int MaSP, int SoLuong)
         {
+
 
             int MaGH = -1;
             if (Session["MaGH"] != null)

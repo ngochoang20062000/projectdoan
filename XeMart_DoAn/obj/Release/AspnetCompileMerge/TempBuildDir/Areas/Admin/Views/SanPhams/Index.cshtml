@@ -1,0 +1,153 @@
+﻿@model PagedList.IPagedList<XeMart_DoAn.Models.SanPham>
+@using PagedList.Mvc;
+
+@{ ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+<link herf="~/Content/PagedList.css" rel="stylesheet" type="text/css" /> List<XeMart_DoAn.Models.HangSanXuat> hsx = (List<XeMart_DoAn.Models.HangSanXuat>)ViewBag.HangSX; }
+@if (ViewBag.Error != null)
+{
+@ViewBag.Error;
+}
+<div class="content-wrapper" style="margin-left:140px">
+    <div class="row">
+        <div class="col-md-12 grid-margin">
+            <div class="d-flex justify-content-between flex-wrap">
+                <div class="d-flex align-items-end flex-wrap">
+                    <div class="mr-md-3 mr-xl-5">
+                        <h2>Xin chào, Admin</h2>
+                        <div class="d-flex">
+                            <i class="mdi mdi-home text-muted hover-cursor"></i>
+                            <p class="text-muted mb-0 hover-cursor">&nbsp;/&nbsp;Quản lý sản phẩm&nbsp;&nbsp;</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card" style="width:1000px">
+            <div class="card-body">
+                <div class="page-title-inner flex-row  medium-flex-wrap">
+                    <div class="flex-col flex-grow medium-text-center">
+                        <h4 class="card-title">
+                            Danh sách sản phẩm
+                        </h4>
+                    </div>
+                    <div class="flex-col medium-text-center">
+                        <p class="woocommerce-result-count hide-for-medium">
+                            Lọc theo
+                        </p>
+
+                        <form class="woocommerce-ordering" method="post" enctype='multipart/form-data' action="@Url.Action("Index","SanPhams")">
+                            <select name="maHSX" class="orderby" aria-label="Đơn hàng của cửa hàng">
+                                <option name="maHSX" value="macdinh" selected="selected">Thứ tự mặc định</option>
+                                @foreach (var item in hsx)
+                                {
+                                    if (item.MaHSX.ToString().Equals(ViewBag.MaHSX))
+                                    {
+                    <option name="maHSX" value="@item.MaHSX" selected="selected">@item.TenHSX</option> }
+                                    else
+                                    {
+                    <option name="maHSX" value="@item.MaHSX" a>@item.TenHSX</option>}
+                                }
+                            </select>
+                        </form>
+                    </div>
+
+                </div>
+
+                <a class="" href="@Url.Action("Create","SanPhams")">
+                    <span class="menu-title btn btn-primary">Thêm sản phẩm</span>
+                </a>
+                <div class="table-responsive pt-3">
+                    <table id="recent-purchases-listing" class="table">
+                        <thead style="text-align:center">
+                            <tr>
+                                <th style="padding-left:0px">
+                                    Tên sản phẩm
+                                </th>
+                                <th>
+                                    Số lượng tồn
+                                </th>
+                                <th>
+                                    giá
+                                </th>
+                                <th>
+                                    Ảnh
+                                </th>
+                                <th>
+                                    Hành động
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                <tr>
+                    <td style="padding:15px 70px">
+                        @Html.DisplayFor(modelItem => item.TenSP)
+                    </td>
+                    <td style="padding:15px 65px">
+                        @Html.DisplayFor(modelItem => item.SoLuongTon)
+                    </td>
+                    <td>
+                        @String.Format("{0:#,###}", item.Gia) $
+                    </td>
+                    <td>
+                        @{ string ImagePath = "~/wwwroot/images/" + item.HinhAnh; }
+                        <img src="@Url.Content(ImagePath)" style="width:100px;height:auto;border-radius:0px" />
+                        <br />
+
+                    </td>
+                    <td>
+                        <div class="d-flex justify-content-center">
+                            <a class="nav-link" href="@Url.Action("Edit", "SanPhams", new { id = item.MaSP })">
+                                <span class="menu-title btn btn-wd btn-success pl-3 pr-3 pt-2 pb-2">Edit</span>
+                            </a>
+                            <a class="nav-link" href="@Url.Action("Details", "SanPhams", new { id = item.MaSP })">
+                                <span class="menu-title btn btn-wd btn-info pl-3 pr-3 pt-2 pb-2">Detail</span>
+                            </a>
+                            <form class="d-flex align-items-center" id="form-@item.MaSP" method="post" action="@Url.Action("DeleteConfirmedCustom", "SanPhams", new { id = item.MaSP })">
+                                <button type="submit" class="menu-title btn btn-wd btn-danger pl-3 pr-3 pt-2 pb-2" onclick="return functionConfirm(this,@item.MaSP )">Delete</button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>}
+                        </tbody>
+                    </table>
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, maHSX = ViewBag.MaHSX }), new PagedListRenderOptions()
+                    {
+                        LiElementClasses = new string[] { "page-number" },
+                        UlElementClasses = new string[] { "page-numbers", "nav-pagination", "links", "text-center" }
+                    })
+                    @*Trang @(Model.PageCount<Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+                        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<script type="text/javascript">
+    function functionConfirm(event, id) {
+        swal({
+            title: 'Thông báo',
+            text: "Bạn chắc chắn muốn xóa sản phẩm này ?",
+            type: 'warning',
+            showCancelButton: true,
+            cancelButtonText: 'Hủy',
+            cancelButtonClass: 'btn btn-danger',
+            showConfirmButton: true,
+            confirmButtonText: 'Đồng ý',
+            confirmButtonClass: 'btn btn-success'
+        }, function (isConfirm) {
+            if (isConfirm) {
+                $('#form-' + id).submit();
+                return true;
+            } else {
+                return false;
+            }
+        });
+        return false;
+    }</script>

@@ -1,9 +1,7 @@
 ﻿@model IEnumerable<XeMart_DoAn.Models.HangSanXuat>
+
 @foreach (var item in Model)
 {
-    
-        <a href="@Url.Action("XemSanPhamTheoHSX", "SanPham", new { id = item.MaHSX })"><h3>@item.TenHSX</h3></a>
-        
-    
+    <a href="@Url.Action("XemSanPhamTheoHSX", "SanPham", new { id = item.MaHSX })"><h3>@item.TenHSX</h3></a>
 }
 

@@ -1,63 +1,7 @@
 ﻿@model PagedList.IPagedList<XeMart_DoAn.Models.SanPham>
 @using PagedList.Mvc;
 @{ ViewBag.Title = "TimKiem";
-                Layout = "~/Views/Shared/_Layout.cshtml"; }
-
-
-@if (ViewBag.Thongbao != null)
-{
-@ViewBag.Thongbao;
-}
-else
-{
-<ul style="list-style: none; display: flex;flex-wrap:wrap;margin-left:20px;background-color:white;">
-    @foreach (var item in Model)
-    {
-
-<li style="margin: 10px; width: 230px; border: groove; border-radius: 10px ">
-    <div style="font-size:20px;margin-top:5px;margin-left:10px">
-        <a href="" style="text-decoration:none">
-            @Html.DisplayFor(modelItem => item.DanhMucSP.TenDM)
-        </a><br />
-        <a href="" style="text-decoration: none; font-size: 16px; color: #5677fc">
-            @item.TenSP
-        </a>
-    </div>
-    <div>
-        <a href="" style="text-decoration:none">
-            @{ string ImagePath = "~/wwwroot/images/" + item.HinhAnh; }
-            <img src="@Url.Content(ImagePath)" class="main-img" style="margin-left:30px;width:170px;height:170px;margin-top:10px" />
-        </a>
-    </div>
-
-    <div>
-        <img src="~/wwwroot/images/sao.png" style="width: 50px; height: 30px; margin-left: 10px" />
-    </div>
-    <div style="font-size: 14px; margin-left: 10px">
-        <span>
-            @Html.DisplayFor(modelItem => item.Gia)$
-        </span>
-        <span>
-
-            <a href=""><img src="~/wwwroot/images/icongh1.png" style="display: block; width: 30px;margin: 10px 10px;float:right" /></a>
-            <img src="~/wwwroot/images/traitim.png" style="display: block; width: 50px;margin: 2px 5px;float:right" />
-        </span>
-
-    </div>
-    <br />
-</li>}
-</ul>
-                <div class="container">
-                    <nav class="woocommerce-pagination">
-                        @Html.PagedListPager(Model, page => Url.Action("TimKiem", new { ViewBag.strSearch, page }), new PagedListRenderOptions()
-                        {
-                            LiElementClasses = new string[] { "page-number" },
-                            UlElementClasses = new string[] { "page-numbers", "nav-pagination", "links", "text-center" }
-                        })
-
-
-                    </nav>
-                </div>}
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
 
 <style>
     .pagination-container ul {
@@ -87,3 +31,165 @@ else
         background-color: cornflowerblue;
     }
 </style>
+@if (ViewBag.Thongbao != null)
+{
+@ViewBag.Thongbao;
+}
+else
+{
+<div class="bar-top">
+    <!-- Banner chính -->
+    <aside class="homebanner">
+        <div id="sync1" class="slider-banner owl-carousel">
+            <div class="item">
+                <a aria-label="slide" data-cate="0" data-place="1546" href="https://www.thegioididong.com/samsung#dien-thoai" onclick="jQuery.ajax({ url: '/bannertracking?bid=52342&r='+ (new Date).getTime(), async: true, cache: false });"><img src="//cdn.tgdd.vn/2022/03/banner/Aseri-830-300-830x300-1.png" alt="A53"></a>
+            </div>
+            <div class="item">
+                <a aria-label="slide" data-cate="0" data-place="1546" href="https://www.thegioididong.com/dtdd-apple-iphone-13-series" onclick="jQuery.ajax({ url: '/bannertracking?bid=52573&r='+ (new Date).getTime(), async: true, cache: false });"><img loading="lazy" class="lazyload owl-lazy" data-src="//cdn.tgdd.vn/2022/04/banner/830-300-830x300.png" alt="iPhone 13 Pro"></a>
+            </div>
+            <div class="item">
+                <a aria-label="slide" data-cate="0" data-place="1546" href="https://www.thegioididong.com/dtdd/oppo-reno7-z" onclick="jQuery.ajax({ url: '/bannertracking?bid=52357&r='+ (new Date).getTime(), async: true, cache: false });"><img loading="lazy" class="lazyload owl-lazy" data-src="//cdn.tgdd.vn/2022/03/banner/reno7-830-300-830x300-3.png" alt="Reno7"></a>
+            </div>
+            <div class="item">
+                <a aria-label="slide" data-cate="0" data-place="1546" href="https://www.thegioididong.com/khuyen-mai-soc/note-11-series" onclick="jQuery.ajax({ url: '/bannertracking?bid=52393&r='+ (new Date).getTime(), async: true, cache: false });"><img loading="lazy" class="lazyload owl-lazy" data-src="//cdn.tgdd.vn/2022/03/banner/830-300-830x300-24.png" alt="dt"></a>
+            </div>
+            <div class="item">
+                <a aria-label="slide" data-cate="0" data-place="1546" href="https://www.thegioididong.com/3000-shops-dong-ho" onclick="jQuery.ajax({ url: '/bannertracking?bid=52386&r='+ (new Date).getTime(), async: true, cache: false });"><img loading="lazy" class="lazyload owl-lazy" data-src="//cdn.tgdd.vn/2022/03/banner/830-300-830x300-22.png" alt="đồng hồ thời trang"></a>
+            </div>
+            <div class="item">
+                <a aria-label="slide" data-cate="0" data-place="1546" href="https://www.thegioididong.com/laptop-gaming" onclick="jQuery.ajax({ url: '/bannertracking?bid=52387&r='+ (new Date).getTime(), async: true, cache: false });"><img loading="lazy" class="lazyload owl-lazy" data-src="//cdn.tgdd.vn/2022/03/banner/830-300-830x300-23.png" alt="Laptop Gaming"></a>
+            </div>
+            <div class="item">
+                <a aria-label="slide" data-cate="0" data-place="1546" href="https://www.thegioididong.com/dong-ho-thong-minh/xiaomi-watch-s1" onclick="jQuery.ajax({ url: '/bannertracking?bid=52504&r='+ (new Date).getTime(), async: true, cache: false });"><img loading="lazy" class="lazyload owl-lazy" data-src="//cdn.tgdd.vn/2022/03/banner/WS1-830-300-830x300.png" alt="Xiaomi Watch S1 Series[break]Nhận Quà 2.440.000đ"></a>
+            </div>
+            <div class="item">
+                <a aria-label="slide" data-cate="0" data-place="1546" href="https://www.thegioididong.com/phu-kien" onclick="jQuery.ajax({ url: '/bannertracking?bid=52593&r='+ (new Date).getTime(), async: true, cache: false });"><img loading="lazy" class="lazyload owl-lazy" data-src="//cdn.tgdd.vn/2022/04/banner/830-300-830x300-1.png" alt="Phụ Kiện Ưu Đãi Bự[break]Giảm Đến 50%++"></a>
+            </div>
+        </div>
+        <div id="sync2" class="slider-banner owl-carousel">
+            <div class="item">
+                <h3>
+                    Galaxy A13 | A23 | A53<br />Giá Từ 4.690.000đ
+                </h3>
+            </div>
+            <div class="item">
+                <h3>
+                    Sắm iPhone 13 Pro<br />Giảm Đến 3,2 Triệu
+                </h3>
+            </div>
+            <div class="item">
+                <h3>
+                    OPPO Reno7 Series 5G<br />Giá Từ 10.490.000đ
+                </h3>
+            </div>
+            <div class="item">
+                <h3>
+                    Redmi Note 11 Series<br />Giảm Đến 300 Ngàn
+                </h3>
+            </div>
+            <div class="item">
+                <h3>
+                    Đồng Hồ Dưới 3 Triệu<br />Đồng Giảm 50%
+                </h3>
+            </div>
+            <div class="item">
+                <h3>
+                    Laptop Gaming<br />Giảm Đến 4 Triệu
+                </h3>
+            </div>
+            <div class="item">
+                <h3>
+                    Xiaomi Watch S1 Series<br />Nhận Quà 2.440.000đ
+                </h3>
+            </div>
+            <div class="item">
+                <h3>
+                    Phụ Kiện Ưu Đãi Bự<br />Giảm Đến 50%++
+                </h3>
+            </div>
+        </div>
+    </aside>
+
+    <!-- End -->
+    <!-- Banner hot -->
+    <div class="preorder-hot">
+        <a aria-label="slide" data-cate="0" data-place="1548" href="https://www.thegioididong.com/apple" onclick="jQuery.ajax({ url: '/bannertracking?bid=42329&r='+ (new Date).getTime(), async: true, cache: false });"><img src="//cdn.tgdd.vn/2022/03/banner/laptopdesk-222-340x340.jpg" alt="iphone"></a><a aria-label="slide" data-cate="0" data-place="1548" href="https://www.thegioididong.com/samsung" onclick="jQuery.ajax({ url: '/bannertracking?bid=50619&r='+ (new Date).getTime(), async: true, cache: false });"><img src="//cdn.tgdd.vn/2022/03/banner/laptopdesk1111111-340x340.jpg" alt="Điện thoại"></a><a aria-label="slide" data-cate="0" data-place="1548" href="https://www.thegioididong.com/laptop-apple-macbook" onclick="jQuery.ajax({ url: '/bannertracking?bid=50617&r='+ (new Date).getTime(), async: true, cache: false });"><img src="//cdn.tgdd.vn/2022/03/banner/macbooksticky-340x340.jpg" alt="Laptop"></a><a aria-label="slide" data-cate="0" data-place="1548" href="https://www.thegioididong.com/tai-nghe/bluetooth-true-wireless-oppo-enco-air-2-ete11?src=osp" onclick="jQuery.ajax({ url: '/bannertracking?bid=44614&r='+ (new Date).getTime(), async: true, cache: false });"><img src="//cdn.tgdd.vn/2022/03/banner/hottainghe-340x340.jpg" alt="Tai nghe"></a>
+    </div>
+
+    <!-- End -->
+</div>
+<!-- Banner sub -->
+<div class="sub-banner">
+    <a aria-label="slide" data-cate="0" data-place="1593" href="https://www.topzone.vn/tekzone/topzone-tung-bung-khai-truong-cua-hang-moi-vao-dau-thang-4-1422409" onclick="jQuery.ajax({ url: '/bannertracking?bid=52278&r='+ (new Date).getTime(), async: true, cache: false });"><img src="//cdn.tgdd.vn/2022/03/banner/1200-60-1200x60-9.png" alt="topzone"></a>
+</div>
+
+
+<div class="prd-promo has-banner" style=background-color:#BDEDFE data-html-id="3429">
+    <div class="prd-promo__top clearfix">
+        <a data-cate="0" data-place="1867" href="https://www.thegioididong.com/mua-online-gia-re#game"
+           onclick="jQuery.ajax({ url: '/bannertracking?bid=49013&r='+ (new Date).getTime(), async: true, cache: false });">
+            <img style="cursor:pointer" src="https://cdn.tgdd.vn/2022/03/banner/desk-1200x90-6.png"
+                 alt="TGDD Desk" width="1200" height="90">
+        </a>
+    </div>
+
+</div>
+<div class="watched"></div>
+<div class="box-common__top clearfix">
+    <h2 class="box-common__title">&#x110;I&#x1EC6;N THO&#x1EA0;I N&#x1ED4;I B&#x1EAC;T NH&#x1EA4;T</h2>
+
+    <div class="box-common__link" data-size="3">
+        
+    </div>
+</div>
+<div class="box-common__main">
+    <div class="listproduct cellphone" data-size="10">
+        @foreach (var item in Model)
+        {
+            <div class="item" data-id="271697" data-pos="1">
+                <a href="@Url.Action("SanPham", "SanPham",new { id = item.MaSP })" class=" main-contain" data-s="Nomal"
+                   data-site="1" data-pro="3" data-cache="True"
+                   data-name="&#x110;i&#x1EC7;n tho&#x1EA1;i Samsung Galaxy S22 Ultra 5G 256GB"
+                   data-id="271697" data-price="33990000.0" data-brand="Samsung"
+                   data-cate="&#x110;i&#x1EC7;n tho&#x1EA1;i" data-box="BoxHome">
+                    <div class="item-label">
+                        <span class="lb-tragop">Tra&#x309; go&#x301;p 0%</span>
+                    </div>
+                    <div class="item-img">
+                        @{ string ImagePath = "~/wwwroot/images/" + item.HinhAnh; }
+                        <img src="@Url.Content(ImagePath)"
+                             class="lazyload" alt="" width=210 height=210>
+                    </div>
+                    <h3>@item.TenSP</h3>
+                    <strong class="price">@String.Format("{0:#,###}", @item.Gia) đ</strong>
+                    <p class="item-gift">Quà <b>2.000.000₫</b></p>
+                    <div class="item-rating">
+                        <p>
+                            <i class="icon-star"></i>
+                            <i class="icon-star"></i>
+                            <i class="icon-star"></i>
+                            <i class="icon-star"></i>
+                            <i class="icon-star-dark"></i>
+                        </p>
+                        <p class="item-rating-total">13</p>
+                    </div>
+
+                </a>
+
+            </div>}
+    </div>
+    
+</div>
+
+<div class="container">
+    <nav class="woocommerce-pagination">
+        @Html.PagedListPager(Model, page => Url.Action("TimKiem", new { ViewBag.strSearch, page }), new PagedListRenderOptions()
+        {
+            LiElementClasses = new string[] { "page-number" },
+            UlElementClasses = new string[] { "page-numbers", "nav-pagination", "links", "text-center" }
+        })
+
+
+    </nav>
+</div>}
+

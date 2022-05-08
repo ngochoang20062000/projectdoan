@@ -1,0 +1,142 @@
+﻿@model PagedList.IPagedList<XeMart_DoAn.Models.HoaDon>
+@using PagedList.Mvc;
+@{ ViewBag.Title = "Index";
+                Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml"; }
+@if (ViewBag.Error != null)
+{
+@ViewBag.Error;
+}
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-md-12 grid-margin">
+            <div class="d-flex justify-content-between flex-wrap">
+                <div class="d-flex align-items-end flex-wrap">
+                    <div class="mr-md-3 mr-xl-5">
+                        <h2>Xin chào, Admin</h2>
+                        <div class="d-flex">
+                            <i class="mdi mdi-home text-muted hover-cursor"></i>
+                            <p class="text-muted mb-0 hover-cursor">&nbsp;/&nbsp;Quản lý hóa đơn&nbsp;&nbsp;</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <div class="page-title-inner flex-row  medium-flex-wrap">
+                    <div class="flex-col flex-grow medium-text-center">
+                        <h4 class="card-title">
+                            Danh sách hóa đơn
+                        </h4>
+                    </div>
+                    <div class="flex-col medium-text-center">
+                        <p class="woocommerce-result-count hide-for-medium">
+                            Lọc theo
+                        </p>
+
+                        <form class="woocommerce-ordering" method="post" enctype='multipart/form-data' action="@Url.Action("Index","HoaDons")">
+                            <select name="tinhtrang" class="orderby" aria-label="Đơn hàng của cửa hàng">
+                                <option name="tinhtrang" value="macdinh" selected="selected">Thứ tự mặc định</option>
+                                @if (ViewBag.tinhtrang == "Đang chờ")
+                                {
+                    <option name="tinhtrang" value="Đang chờ" selected="selected">Đang chờ</option> }
+                                else
+                                {
+                    <option name="tinhtrang" value="Đang chờ">Đang chờ</option>}
+                                @if (ViewBag.tinhtrang == "Đang giao")
+                                {
+                    <option name="tinhtrang" value="Đang giao" selected="selected">Đang giao</option> }
+                                else
+                                {
+                    <option name="tinhtrang" value="Đang giao">Đang giao</option>}
+                                @if (ViewBag.tinhtrang == "Đã nhận")
+                                {
+                    <option name="tinhtrang" value="Đã nhận" selected="selected">Đã nhận</option> }
+                                else
+                                {
+                    <option name="tinhtrang" value="Đã nhận">Đã nhận</option>}
+                                @if (ViewBag.tinhtrang == "Đã hủy")
+                                {
+                    <option name="tinhtrang" value="Đã hủy" selected="selected">Đã hủy</option> }
+                                else
+                                {
+                    <option name="tinhtrang" value="Đã hủy">Đã hủy</option>}
+                            </select>
+
+                        </form>
+                    </div>
+                </div>
+                <div class="table-responsive pt-3">
+                    <table id="recent-purchases-listing" class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Mã hóa đơn
+                                </th>
+                                <th>
+                                    Tên khách hàng
+                                </th>
+                                <th>
+                                    Địa chỉ
+                                </th>
+                                <th>
+                                    Ngày tạo
+                                </th>
+
+                                <th>
+                                    Tình trạng
+                                </th>
+
+                                <th>
+                                    Hành động
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaHD)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HoTen)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DiaChi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NgayTao)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TinhTrang)
+                    </td>
+
+                    <td>
+                        <div class="d-flex justify-content-center">
+                            @if (item.TinhTrang != "Đã nhận" && item.TinhTrang != "Đã hủy")
+                            {
+            <a class="nav-link" href="@Url.Action("Edit", "HoaDons", new { id = item.MaHD })">
+                <span class="menu-title btn btn-wd btn-success pl-3 pr-3 pt-2 pb-2">Cập nhật</span>
+            </a>}
+                            <a class="nav-link" href="@Url.Action("Details", "HoaDons", new { id = item.MaHD })">
+                                <span class="menu-title btn btn-wd btn-info pl-3 pr-3 pt-2 pb-2">Xem chi tiết</span>
+                            </a>
+                        </div>
+                    </td>
+                </tr>}
+                        </tbody>
+                    </table>
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page, tinhtrang = ViewBag.tinhtrang }), new PagedListRenderOptions()
+                    {
+                        LiElementClasses = new string[] { "page-number" },
+                        UlElementClasses = new string[] { "page-numbers", "nav-pagination", "links", "text-center" }
+                    })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

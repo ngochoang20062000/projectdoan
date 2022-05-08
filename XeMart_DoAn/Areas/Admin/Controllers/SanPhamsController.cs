@@ -33,7 +33,26 @@ namespace XeMart_DoAn.Areas.Admin.Controllers
             int pageNumber = (page ?? 1);
             return View(sanPham.ToPagedList(pageNumber, pageSize));
         }
-
+        public ActionResult TimKiem(string strSearch, int? page)
+        {
+            var sanpham = db.SanPhams.ToList();
+            if (strSearch != null)
+            {
+                sanpham = db.SanPhams.Where(s => s.TenSP.ToUpper().Trim().Contains(strSearch.ToUpper().Trim())).ToList();
+            }
+            ViewBag.strSearch = strSearch;
+            if (sanpham.Count > 0)
+            {
+                int pageSize = 12;
+                int pageNumber = (page ?? 1);
+                return View(sanpham.ToPagedList(pageNumber, pageSize));
+            }
+            else
+            {
+                ViewBag.Thongbao = "Không có sản phẩm nào";
+                return View();
+            }
+        }
         // GET: Admin/SanPhams/Details/5
         public ActionResult Details(int? id)
         {

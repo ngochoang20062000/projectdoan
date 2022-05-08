@@ -15,7 +15,7 @@
 
 
                                 <div class="content-wrapper">
-                                    <div class="row">
+                                    <div class="row col-xl-12 ml-1">
                                         <div class="col-md-12 grid-margin">
                                             <div class="d-flex justify-content-between flex-wrap">
                                                 <div class="d-flex align-items-end flex-wrap">
@@ -30,24 +30,22 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 grid-margin">
+                                    <div class="col-xl-12 grid-margin">
                                         <div class="card">
                                             <div class="card-body">
-                                                <h1>Thêm mới hãng sản xuất</h1>
                                                 <form class="form-sample">
-
-                                                    <div class="row">
+                                                    <div class="row col-xl-12 ml-1">
                                                         <div class="col-md-6">
-                                                            <div class="form-group row">
-                                                                <label class="col-sm-3 col-form-label">@Html.LabelFor(model => model.MaHSX)</label>
+                                                            <div class="form-group row col-xl-12 ml-1">
+                                                                <label class="col-sm-3 col-form-label">Mã HSX</label>
                                                                 <div class="col-sm-9">
                                                                     <input type="text" class="form-control" disabled="true" />
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <div class="form-group row">
-                                                                <label class="col-sm-3 col-form-label">@Html.LabelFor(model => model.TenHSX)</label>
+                                                            <div class="form-group row col-xl-12 ml-1">
+                                                                <label class="col-sm-3 col-form-label">Tên HSX</label>
                                                                 <div class="col-sm-9">
                                                                     @Html.EditorFor(model => model.TenHSX, new { htmlAttributes = new { @class = "form-control" } })
                                                                     @Html.ValidationMessageFor(model => model.TenHSX, "", new { @class = "text-danger" })
