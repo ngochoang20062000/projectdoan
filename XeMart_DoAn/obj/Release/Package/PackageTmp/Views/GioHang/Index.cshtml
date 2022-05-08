@@ -1,0 +1,176 @@
+﻿@model List<XeMart_DoAn.Models.Gio>
+@{ ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    decimal TongTien = 0; }
+
+@if (Model == null || Model.Count == 0)
+{
+<p style="font-size: 30px; font-weight: 500; color:#326e51" class="text-center mt-5 mb-5">
+    Chưa có sản phẩm trong giỏ hàng.
+</p>
+<div style="margin-top:10px">
+    <a href="@Url.Action("Index", "Home")" style=" color: red; font-size: 20px; margin-top: 10px">←&nbsp;Quay trở lại cửa hàng</a>
+</div>
+
+                 }
+                            else
+                            {
+                <table width="1200px">
+
+                    <tr style="height:50px;background-color:deepskyblue;text-align:center">
+                        <td style="font-size:20px;">Sản phẩm</td>
+                        <td style="font-size:20px;">Giá</td>
+                        <td style="font-size:20px;">Số lượng</td>
+                        <td style="font-size:20px;">Tạm tính</td>
+                        <td style="font-size:20px;">Hành động</td>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+
+                        String imagePath = "~/wwwroot/images/" + item.sanPham.HinhAnh;
+                        TongTien += item.sanPham.Gia * item.soLuong;
+    <tr style="text-align:center">
+        <td style="padding: 10px 10px">
+
+
+            <img width="90" src="@Url.Content(imagePath)" alt="" loading="lazy" style="float:left" />
+            <p style="float: left; margin-top: 30px">@item.sanPham.TenSP</p>
+
+        </td>
+        <td><p>@String.Format("{0:#,###}", item.sanPham.Gia)</p></td>
+        <td>
+            <form id="SuaSL" method="post" enctype='multipart/form-data' action="@Url.Action("SuaSoLuong", "GioHang", new { MaSP = item.sanPham.MaSP })">
+                <div class="quantity buttons_added">
+                    <input style="background: #eee;width:20px" type="submit" value="-" class="minus button is-form">
+                    <input style="width:50px" type="number" id="quantity_60d19c138f0b1" class="input-text qty text" step="1" min="0" max="@item.sanPham.SoLuongTon" name="SoLuong" value="@item.soLuong" title="SL" size="4" placeholder="" inputmode="numeric" />
+                    <input style="background: #eee; width: 20px" type="submit" value="+" class="plus button is-form">
+                </div>
+            </form>
+            @item.soLuong/@item.sanPham.SoLuongTon
+        </td>
+        <td>
+            <p>@((item.soLuong * item.sanPham.Gia).ToString("N0"))</p>
+        </td>
+        <td>
+            <form id="deleteSP-@item.sanPham.MaSP" method="post" action="@Url.Action("XoaKhoiGio", "GioHang", new{MaSP = item.sanPham.MaSP})">
+                <button type="submit" style=" color: red; background-color:white;border: 0; cursor: pointer;font-size:20px" class="btn btn-sm" onclick="return functionConfirm(this, @item.sanPham.MaSP)">
+                    Xóa
+                </button>
+            </form>
+        </td>
+    </tr>
+}
+
+
+                    <tr>
+                        <td style="padding: 10px 10px">
+                            <p style="color:red;font-size:18px">Tổng tiền: @String.Format("{0:#,###}", @TongTien) đ</p>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td style="background-color: forestgreen; text-align: center;height:40px;">
+                            <a href="@Url.Action("Index", "Home")" style="font-size:20px;color:white;">
+                                Tiếp tục xem sản phẩm
+                            </a>
+                        </td>
+                        <td style="background-color: forestgreen; text-align: center;height:40px">
+                            <form id="delete-cart" method="post" action="@Url.Action("XoaKhoiGio", "GioHang", new { MaSP = -1})">
+                                <button style="font-size: 20px; background-color: forestgreen;color:white;border:0px; cursor: pointer" type="submit" class="btn btn-sm" onclick="return functionConfirmDeleteCart(this)">Xóa giỏ hàng</button>
+                            </form>
+                        </td>
+                        <td style="background-color: forestgreen; text-align: center;height:40px">
+                            <a href="@Url.Action("ThanhToan","GioHang")" style="font-size:20px;color:white;">
+                                Tiến hành thanh toán
+                            </a>
+                        </td>
+
+
+                    </tr>
+                </table>}
+
+
+<script type='text/javascript' src='~/wwwroot/js/hoverIntent.minc245.js' id='hoverIntent-js'></script>
+<script type='text/javascript' id='flatsome-js-js-extra'>
+    /* <![CDATA[ */
+    var flatsomeVars = { "ajaxurl": "https:\/\/lamdepz.com\/wp-admin\/admin-ajax.php", "rtl": "", "sticky_height": "45", "lightbox": { "close_markup": "<button title=\"%title%\" type=\"button\" class=\"mfp-close\"><svg xmlns=\"http:\/\/www.w3.org\/2000\/svg\" width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" class=\"feather feather-x\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"><\/line><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"><\/line><\/svg><\/button>", "close_btn_inside": false }, "user": { "can_edit_pages": false }, "i18n": { "mainMenu": "Main Menu" }, "options": { "cookie_notice_version": "1" } };
+    /* ]]> */
+</script>
+<script type='text/javascript' src='~/wwwroot/js/flatsome2916.js?ver=3.13.1' id='flatsome-js-js'></script>
+<script type='text/javascript' src='~/wwwroot/js/woocommerce2916.js?ver=3.13.1' id='flatsome-theme-woocommerce-js-js'></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+    function functionConfirm(event, id) {
+        swal({
+            title: 'Thông báo',
+            text: "Bạn chắc chắn muốn xóa sản phẩm này",
+            type: 'warning',
+            showCancelButton: true,
+            cancelButtonText: 'Hủy',
+            cancelButtonClass: 'btn btn-danger',
+            showConfirmButton: true,
+            confirmButtonText: 'Đồng ý',
+            confirmButtonClass: 'btn btn-success'
+        }, function (isConfirm) {
+            if (isConfirm) {
+                $("#deleteSP-" + id).submit();
+
+                return true;
+            } else {
+                return false;
+            }
+        });
+        return false;
+    }
+</script>
+
+<script type="text/javascript">
+    function functionConfirmDeleteCart(event) {
+        swal({
+            title: 'Thông báo',
+            text: "Bạn chắc chắn muốn xóa tất cả sản phẩm này khỏi giỏ hàng",
+            type: 'warning',
+            showCancelButton: true,
+            cancelButtonText: 'Hủy',
+            cancelButtonClass: 'btn btn-danger',
+            showConfirmButton: true,
+            confirmButtonText: 'Đồng ý',
+            confirmButtonClass: 'btn btn-success'
+        }, function (isConfirm) {
+            if (isConfirm) {
+                $('#delete-cart').submit();
+                return true;
+            } else {
+                return false;
+            }
+        });
+        return false;
+    }
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        console.log("Hello");
+
+        loadData();
+    });
+
+    const loadData = async () => {
+        console.log("Hello1");
+        try {
+            const res = await fetch(
+                "/GioHang/Index"
+            );
+            const data = await res.json();
+            console.log(data);
+
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
+</script>
+

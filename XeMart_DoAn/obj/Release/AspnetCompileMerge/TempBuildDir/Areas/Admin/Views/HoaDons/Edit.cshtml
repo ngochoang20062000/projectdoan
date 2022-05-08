@@ -1,0 +1,165 @@
+﻿@model XeMart_DoAn.Models.HoaDon
+
+@{ ViewBag.Title = "Edit";
+                Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml"; }
+
+
+@using (Html.BeginForm())
+{
+@Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.MaHD)
+
+
+                                                <div class="content-wrapper">
+                                                    <div class="row">
+                                                        <div class="col-md-12 grid-margin">
+                                                            <div class="d-flex justify-content-between flex-wrap">
+                                                                <div class="d-flex align-items-end flex-wrap">
+                                                                    <div class="mr-md-3 mr-xl-5">
+                                                                        <h2>Xin chào, Admin</h2>
+                                                                        <div class="d-flex">
+                                                                            <i class="mdi mdi-home text-muted hover-cursor"></i>
+                                                                            <p class="text-muted mb-0 hover-cursor">&nbsp;/&nbsp;Quản lý Hóa Đơn&nbsp;&nbsp;/&nbsp;Cập nhật hóa đơn</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 grid-margin">
+                                                        <div class="card">
+                                                            <div class="card-body">
+                                                                <div class="row">
+                                                                    <div class="col-md-4">
+                                                                        <h4 class="card-title">Cập nhật hóa đơn</h4>
+                                                                    </div>
+                                                                </div>
+
+
+                                                                <form class="form-sample">
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                @Html.LabelFor(model => model.MaGioHang, "Mã Giỏ Hàng", htmlAttributes: new { @class = "control-label" })
+                                                                                <div class="col-md-10">
+                                                                                    @Html.EditorFor(model => model.MaGioHang, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                                                    @Html.ValidationMessageFor(model => model.MaGioHang, "", new { @class = "text-danger" })
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                @Html.LabelFor(model => model.NgayTao, htmlAttributes: new { @class = "control-label" })
+                                                                                <div class="col-md-10">
+                                                                                    @Html.EditorFor(model => model.NgayTao, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                                                    @Html.ValidationMessageFor(model => model.NgayTao, "", new { @class = "text-danger" })
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+
+                                                                            <div class="form-group">
+                                                                                @Html.LabelFor(model => model.HoTen, htmlAttributes: new { @class = "control-label" })
+                                                                                <div class="col-md-10">
+                                                                                    @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                                                    @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                @Html.LabelFor(model => model.HinhThucThanhToan, htmlAttributes: new { @class = "control-label" })
+                                                                                <div class="col-md-10">
+                                                                                    @Html.EditorFor(model => model.HinhThucThanhToan, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                                                    @Html.ValidationMessageFor(model => model.HinhThucThanhToan, "", new { @class = "text-danger" })
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                @Html.LabelFor(model => model.SoDienThoai, htmlAttributes: new { @class = "control-label" })
+                                                                                <div class="col-md-10">
+                                                                                    @Html.EditorFor(model => model.SoDienThoai, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                                                    @Html.ValidationMessageFor(model => model.SoDienThoai, "", new { @class = "text-danger" })
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                @Html.LabelFor(model => model.HinhThucVanChuyen, htmlAttributes: new { @class = "control-label" })
+                                                                                <div class="col-md-10">
+                                                                                    @Html.EditorFor(model => model.HinhThucVanChuyen, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                                                    @Html.ValidationMessageFor(model => model.HinhThucVanChuyen, "", new { @class = "text-danger" })
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row">
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                @Html.LabelFor(model => model.DiaChi, htmlAttributes: new { @class = "control-label" })
+                                                                                <div class="col-md-10">
+                                                                                    @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                                                    @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                @Html.LabelFor(model => model.TinhTrang, htmlAttributes: new { @class = "control-label" })
+                                                                                <div class="col-md-10">
+                                                                                    @*@Html.EditorFor(model => model.TinhTrang, new { htmlAttributes = new { @class = "form-control" } })*@
+                                                                                    <select class="form-control" id="TinhTrang" name="TinhTrang">
+                                                                                        @if (ViewBag.TinhTrang == "Đang chờ")
+                                                                                        {
+                                                                        <option name="tinhtrang" value="Đang chờ" selected="selected">Đang chờ</option> }
+                                                                                        else
+                                                                                        {
+                                                                        <option name="tinhtrang" value="Đang chờ">Đang chờ</option>}
+                                                                                        @if (ViewBag.TinhTrang == "Đang giao")
+                                                                                        {
+                                                                        <option name="tinhtrang" value="Đang giao" selected="selected">Đang giao</option> }
+                                                                                        else
+                                                                                        {
+                                                                        <option name="tinhtrang" value="Đang giao">Đang giao</option>}
+                                                                                        @if (ViewBag.TinhTrang == "Đã nhận")
+                                                                                        {
+                                                                        <option name="tinhtrang" value="Đã nhận" selected="selected">Đã nhận</option> }
+                                                                                        else
+                                                                                        {
+                                                                        <option name="tinhtrang" value="Đã nhận">Đã nhận</option>}
+                                                                                        @if (ViewBag.TinhTrang == "Đã hủy")
+                                                                                        {
+                                                                        <option name="tinhtrang" value="Đã hủy" selected="selected">Đã hủy</option> }
+                                                                                        else
+                                                                                        {
+                                                                        <option name="tinhtrang" value="Đã hủy">Đã hủy</option>}
+                                                                                    </select>
+                                                                                    @Html.ValidationMessageFor(model => model.TinhTrang, "", new { @class = "text-danger" })
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="d-flex justify-content-center">
+
+                                                                        <div class="nav-link ml-2">
+                                                                            <input type="submit" value="Lưu lại" class="btn btn-default menu-title btn btn-outline-success btn-fw" />
+                                                                        </div>
+                                                                        <a class="nav-link mr-2" href="@Url.Action("Index","HoaDons")">
+                                                                            <span class="menu-title btn btn-outline-danger btn-fw">Quay lại</span>
+                                                                        </a>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>}

@@ -1,0 +1,60 @@
+﻿@model List<XeMart_DoAn.Models.Gio>
+@{ ViewBag.Title = "XacNhanThanhToan";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+                XeMart_DoAn.Models.TaiKhoan taiKhoan = new XeMart_DoAn.Models.TaiKhoan();
+                decimal Tien = 0;
+                XeMart_DoAn.Models.HoaDon hoaDon = ViewBag.HoaDon; }
+
+
+<div class="watched"></div>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-7">
+            <p style="font-size: 24px;font-weight: 700;">Chi tiết đơn hàng</p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Sản phẩm</th>
+                        <th scope="col">Số lượng</th>
+                        <th scope="col">Hình ảnh</th>
+                        <th scope="col">Tổng</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                        Tien += item.sanPham.Gia * item.soLuong;
+                        String imagePath = "~/wwwroot/images/" + item.sanPham.HinhAnh;
+                        <tr>
+                            <th scope="row">@item.sanPham.TenSP</th>
+                            <td> @item.soLuong</td>
+                            <td><img width="200" src="@Url.Content(imagePath)" /></td>
+
+                        </tr>
+                    }
+                </tbody>
+                <tr>
+                    <th>Tổng cộng</th>
+                    <td></td>
+                    <td></td>
+                    <td>@String.Format("{0:#,###}", Tien) ₫</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-4">
+            <div class="list-group">
+                <a href="#" class="list-group-item list-group-item-action active">
+                    Cảm ơn bạn đã đặt hàng
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">Mã đơn hàng: @hoaDon.MaHD</a>
+                <a href="#" class="list-group-item list-group-item-action">Ngày đặt : @hoaDon.NgayTao </a>
+                <a href="#" class="list-group-item list-group-item-action">Tổng cộng: @String.Format("{0:#,###}", Tien) ₫</a>
+                <a href="#" class="list-group-item list-group-item-action disabled">Phương thức thanh toán: @hoaDon.HinhThucThanhToan</a>
+            </div>
+            <div class="form-row place-order mt-3 ml-1">
+                <a href="@Url.Action("index","Home")"><button type="submit" class="button alt" name="woocommerce_checkout_place_order">Tiếp tục mua hàng</button></a>
+            </div>
+        </div>
+    </div>
+</div>

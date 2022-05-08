@@ -1,0 +1,93 @@
+﻿@model PagedList.IPagedList<XeMart_DoAn.Models.SanPham>
+@using PagedList.Mvc;
+
+@{ 
+    ViewBag.Title = "XemSanPhamTheoDanhMuc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+ }
+<div class="box-common__top clearfix">
+    <h2 class="box-common__title">&#x110;I&#x1EC6;N THO&#x1EA0;I N&#x1ED4;I B&#x1EAC;T NH&#x1EA4;T</h2>
+
+    <div class="box-common__link" data-size="3">
+        @{
+            Html.RenderAction("MauSac", "Home");
+        }
+    </div>
+</div>
+<div class="box-common__main">
+    <div class="listproduct cellphone" data-size="10">
+        @foreach (var item in Model)
+        {
+<div class="item" data-id="271697" data-pos="1">
+    <a href="@Url.Action("SanPham", "SanPham",new { id = item.MaSP })" class=" main-contain" data-s="Nomal"
+       data-site="1" data-pro="3" data-cache="True"
+       data-name="&#x110;i&#x1EC7;n tho&#x1EA1;i Samsung Galaxy S22 Ultra 5G 256GB"
+       data-id="271697" data-price="33990000.0" data-brand="Samsung"
+       data-cate="&#x110;i&#x1EC7;n tho&#x1EA1;i" data-box="BoxHome">
+        <div class="item-label">
+            <span class="lb-tragop">Tra&#x309; go&#x301;p 0%</span>
+        </div>
+        <div class="item-img">
+            @{ string ImagePath = "~/wwwroot/images/" + item.HinhAnh; }
+            <img src="@Url.Content(ImagePath)"
+                 class="lazyload" alt="" width=210 height=210>
+        </div>
+        <h3>@item.TenSP</h3>
+        <strong class="price">@String.Format("{0:#,###}", @item.Gia) đ</strong>
+        <p class="item-gift">Quà <b>2.000.000₫</b></p>
+        <div class="item-rating">
+            <p>
+                <i class="icon-star"></i>
+                <i class="icon-star"></i>
+                <i class="icon-star"></i>
+                <i class="icon-star"></i>
+                <i class="icon-star-dark"></i>
+            </p>
+            <p class="item-rating-total">13</p>
+        </div>
+
+    </a>
+
+</div>}
+    </div>
+    <div class="container">
+        <nav class="woocommerce-pagination">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions()
+            {
+                LiElementClasses = new string[] { "page-number" },
+                UlElementClasses = new string[] { "page-numbers", "nav-pagination", "links", "text-center" }
+            })
+
+        </nav>
+    </div>
+</div>
+<style>
+    .pagination-container ul {
+        text-align: center;
+        display: flex;
+    }
+
+        .pagination-container ul li {
+            text-align: center;
+            width: 60px;
+            border-color: gainsboro;
+            margin: 0px;
+            padding: 10px 10px;
+            height:40px;
+            border-radius:20px;
+        }
+
+            .pagination-container ul li:hover {
+                background-color: orange;
+            }
+
+    .active a {
+        
+        color: white;
+        
+    }
+    .active {
+        background-color: cornflowerblue;
+    }
+</style>

@@ -1,0 +1,179 @@
+﻿@model XeMart_DoAn.Models.HoaDon
+
+@{ ViewBag.Title = "Details";
+                Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+                List<XeMart_DoAn.Models.SanPham> sp = (List<XeMart_DoAn.Models.SanPham>)ViewBag.SanPham;
+                var ghiChu = Model.GhiChu;
+                double tong = 0; }
+
+<div class="content-wrapper">
+    <div class="row col-xl-12 ml-1">
+        <div class="col-md-12 grid-margin">
+            <div class="d-flex justify-content-between flex-wrap">
+                <div class="d-flex align-items-end flex-wrap">
+                    <div class="mr-md-3 mr-xl-5">
+                        <h2>Xin chào, Admin</h2>
+                        <div class="d-flex">
+                            <i class="mdi mdi-home text-muted hover-cursor"></i>
+                            <p class="text-muted mb-0 hover-cursor">&nbsp;/&nbsp;Quản lý hóa đơn&nbsp;&nbsp;/&nbsp;Thông tin chi tiết hóa đơn</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <form class="form-sample">
+                    <div class="row col-xl-12 ml-1">
+                        <div class="col-md-6">
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-4 col-form-label">Mã giỏ hàng:</label>
+                                <div class="col-sm-8">
+                                    <label class="col-form-label">: @Html.DisplayFor(model => model.MaGioHang)</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-4 col-form-label">Ngày tạo:</label>
+                                <div class="col-sm-8">
+                                    <label class="col-form-label">: @Html.DisplayFor(model => model.NgayTao)</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-4 col-form-label">Tình trạng:</label>
+                                <div class="col-sm-8">
+                                    <label class="col-form-label">: @Html.DisplayFor(model => model.TinhTrang)</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-4 col-form-label">Số điện thoại:</label>
+                                <div class="col-sm-8">
+                                    <label class="col-form-label">: @Html.DisplayFor(model => model.SoDienThoai)</label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="row col-xl-12 ml-1">
+                        <div class="col-md-6">
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-4 col-form-label">Hình thức vận chuyển:</label>
+                                <div class="col-sm-8">
+                                    <label class="col-form-label">: @Html.DisplayFor(model => model.HinhThucVanChuyen)</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-4 col-form-label">Hình thức thanh toán:</label>
+                                <div class="col-sm-8">
+                                    <label class="col-form-label">: @Html.DisplayFor(model => model.HinhThucThanhToan)</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row col-xl-12 ml-1">
+
+                        @if (ghiChu != "")
+                        {
+            <div class="col-md-6">
+                <div class="form-group row col-xl-12 ml-1">
+                    <label class="col-sm-4 col-form-label">Ghi chú:</label>
+                    <div class="col-sm-8">
+                        <label class="col-form-label">: @Html.DisplayFor(model => model.GhiChu)</label>
+                    </div>
+                </div>
+            </div>}
+
+                        <div class="col-md-6">
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-4 col-form-label">Họ tên:</label>
+                                <div class="col-sm-8">
+                                    <label class="col-form-label">: @Html.DisplayFor(model => model.HoTen)</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-4 col-form-label">Địa chỉ:</label>
+                                <div class="col-sm-8">
+                                    <label class="col-form-label">: @Html.DisplayFor(model => model.DiaChi)</label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <table id="recent-purchases-listing" class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Tên sản phẩm
+                                </th>
+
+                                <th>
+                                    Ảnh
+                                </th>
+
+                                <th>
+                                    Giá
+                                </th>
+                                <th>
+                                    Số lượng
+                                </th>
+                                <th>Tổng</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in sp)
+                            {
+                                tong += Convert.ToDouble(item.Gia * item.SoLuongTon);
+                <tr>
+                    <td>
+                        @item.TenSP
+                    </td>
+                    <td>
+
+                        @{ string ImagePath = "~/wwwroot/images/" + item.HinhAnh; }
+                        <img src="@Url.Content(ImagePath)" style="width:100px;height:auto;border-radius:0px" />
+                    </td>
+                    <td>
+                        @String.Format("{0:#,###}", item.Gia) đ
+                    </td>
+                    <td>
+                        @item.SoLuongTon   @*Biến số lượng *@
+                    </td>
+                    <td>
+                        @String.Format("{0:#,###}", (item.Gia * item.SoLuongTon)) đ
+                    </td>
+                </tr>}
+                        </tbody>
+                    </table>
+                    <div class="row col-xl-12 ml-1 justify-end mt-3">
+                        <div class="col-md-3">
+                            Tổng tiền:
+                            <ins><span class="font-weight-bold" style="font-size:25px; color:red"><bdi>@String.Format("{0:#,###}", tong) &#8363;</bdi></span></ins>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <a class="nav-link" href="@Url.Action("Index","HoaDons")">
+                            <span class="menu-title btn btn-outline-primary btn-fw ">Quay lại</span>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

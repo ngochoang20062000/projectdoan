@@ -1,0 +1,69 @@
+﻿@model XeMart_DoAn.Models.HangSanXuat
+
+@{ ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml"; }
+
+
+
+@using (Html.BeginForm())
+{
+@Html.AntiForgeryToken()
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+
+                                <div class="content-wrapper">
+                                    <div class="row col-xl-12 ml-1">
+                                        <div class="col-md-12 grid-margin">
+                                            <div class="d-flex justify-content-between flex-wrap">
+                                                <div class="d-flex align-items-end flex-wrap">
+                                                    <div class="mr-md-3 mr-xl-5">
+                                                        <h2>Xin chào, Admin</h2>
+                                                        <div class="d-flex">
+                                                            <i class="mdi mdi-home text-muted hover-cursor"></i>
+                                                            <p class="text-muted mb-0 hover-cursor">&nbsp;/&nbsp;Quản lý hãng sản xuất&nbsp;&nbsp;/&nbsp;Thêm hãng sản xuất</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-12 grid-margin">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <form class="form-sample">
+                                                    <div class="row col-xl-12 ml-1">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group row col-xl-12 ml-1">
+                                                                <label class="col-sm-3 col-form-label">Mã HSX</label>
+                                                                <div class="col-sm-9">
+                                                                    <input type="text" class="form-control" disabled="true" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="form-group row col-xl-12 ml-1">
+                                                                <label class="col-sm-3 col-form-label">Tên HSX</label>
+                                                                <div class="col-sm-9">
+                                                                    @Html.EditorFor(model => model.TenHSX, new { htmlAttributes = new { @class = "form-control" } })
+                                                                    @Html.ValidationMessageFor(model => model.TenHSX, "", new { @class = "text-danger" })
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex justify-content-center">
+                                                        <a class="nav-link mr-2" href="@Url.Action("Index","HangSanXuats")">
+                                                            <span class="menu-title btn btn-outline-danger btn-fw">Quay lại</span>
+                                                        </a>
+                                                        <div class="nav-link ml-2">
+                                                            <input type="submit" value="Thêm mới" class="btn btn-default menu-title btn btn-outline-success btn-fw" />
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>}
+

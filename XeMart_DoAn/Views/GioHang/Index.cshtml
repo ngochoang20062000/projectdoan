@@ -1,0 +1,240 @@
+﻿@model List<XeMart_DoAn.Models.Gio>
+@{ ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    decimal TongTien = 0; }
+<style>
+    .quantity {
+        display: inline-block;
+    }
+
+        .quantity .input-text.qty {
+            width: 35px;
+            height: 39px;
+            padding: 0 5px;
+            text-align: center;
+            background-color: transparent;
+            border: 1px solid #efefef;
+        }
+
+        .quantity.buttons_added {
+            text-align: left;
+            position: relative;
+            white-space: nowrap;
+            vertical-align: top;
+        }
+
+            .quantity.buttons_added input {
+                display: inline-block;
+                margin: 0;
+                vertical-align: top;
+                box-shadow: none;
+            }
+
+            .quantity.buttons_added .minus,
+            .quantity.buttons_added .plus {
+                padding: 7px 10px 8px;
+                height: 41px;
+                background-color: #ffffff;
+                border: 1px solid #efefef;
+                cursor: pointer;
+            }
+
+            .quantity.buttons_added .minus {
+                border-right: 0;
+            }
+
+            .quantity.buttons_added .plus {
+                border-left: 0;
+            }
+
+                .quantity.buttons_added .minus:hover,
+                .quantity.buttons_added .plus:hover {
+                    background: #eeeeee;
+                }
+
+        .quantity input::-webkit-outer-spin-button,
+        .quantity input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            margin: 0;
+        }
+
+        .quantity.buttons_added .minus:focus,
+        .quantity.buttons_added .plus:focus {
+            outline: none;
+        }
+</style>
+<div class="watched"></div>
+@if (Model == null || Model.Count == 0)
+{
+<p style="font-size: 30px; font-weight: 500; color:#326e51" class="text-center mt-5 mb-5">
+    Chưa có sản phẩm trong giỏ hàng.
+</p>
+                <div style="margin-top:10px" id="content">
+                    <a href="@Url.Action("Index", "Home")" style=" color: red; font-size: 20px; margin-top: 10px">←&nbsp;Quay trở lại cửa hàng</a>
+                </div> }
+            else
+            {
+<table width="1200px">
+
+    <tr style="height:50px;background-color:deepskyblue;text-align:center">
+        <td style="font-size:20px;">Sản phẩm</td>
+        <td style="font-size:20px;">Giá</td>
+        <td style="font-size:20px;">Số lượng</td>
+        <td style="font-size:20px;">Tạm tính</td>
+        <td style="font-size:20px;">Hành động</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+
+        String imagePath = "~/wwwroot/images/" + item.sanPham.HinhAnh;
+        TongTien += item.sanPham.Gia * item.soLuong;
+<tr style="text-align:center">
+    <td style="padding: 10px 10px">
+
+
+        <img width="90" src="@Url.Content(imagePath)" alt="" loading="lazy" style="float:left" />
+        <p style="float: left; margin-top: 30px">@item.sanPham.TenSP</p>
+
+    </td>
+    <td><p>@String.Format("{0:#,###}", item.sanPham.Gia)</p></td>
+    <td>
+        <form id="formcart" method="post" enctype='multipart/form-data' action="@Url.Action("SuaSoLuong", "GioHang", new { MaSP = item.sanPham.MaSP })">
+            <div class="quantity buttons_added">
+                <button style="background: #eee" class="minus button is-form">-</button>
+                <input type="number" class="input-text qty text" step="1" min="0" max="@item.sanPham.SoLuongTon" name="SoLuong" value="@item.soLuong" title="SL" size="4" inputmode="numeric" />
+                <button style="background: #eee" class="plus button is-form">+</button>
+            </div>
+        </form>
+        @item.soLuong/@item.sanPham.SoLuongTon
+    </td>
+    <td>
+        <p>@((item.soLuong * item.sanPham.Gia).ToString("N0"))</p>
+    </td>
+    <td>
+        <form id="deleteSP-@item.sanPham.MaSP" method="post" action="@Url.Action("XoaKhoiGio", "GioHang", new{MaSP = item.sanPham.MaSP})">
+            <button type="submit" style=" color: red; background-color:white;border: 0; cursor: pointer;font-size:20px" class="btn btn-sm" onclick="return functionConfirm(this, @item.sanPham.MaSP)">
+                Xóa
+            </button>
+        </form>
+    </td>
+</tr>
+}
+
+
+    <tr>
+        <td style="padding: 10px 10px">
+            <p style="color:red;font-size:18px">Tổng tiền: @String.Format("{0:#,###}", @TongTien) đ</p>
+        </td>
+
+    </tr>
+    <tr>
+        <td style="background-color: forestgreen; text-align: center;height:40px;">
+            <a href="@Url.Action("Index", "Home")" style="font-size:20px;color:white;">
+                Tiếp tục xem sản phẩm
+            </a>
+        </td>
+        <td style="background-color: forestgreen; text-align: center;height:40px">
+            <form id="delete-cart" method="post" action="@Url.Action("XoaKhoiGio", "GioHang", new { MaSP = -1})">
+                <button style="font-size: 20px; background-color: forestgreen;color:white;border:0px; cursor: pointer" type="submit" class="btn btn-sm" onclick="return functionConfirmDeleteCart(this)">Xóa giỏ hàng</button>
+            </form>
+        </td>
+        <td style="background-color: forestgreen; text-align: center;height:40px">
+            <a href="@Url.Action("ThanhToan","GioHang")" style="font-size:20px;color:white;">
+                Tiến hành thanh toán
+            </a>
+        </td>
+
+
+    </tr>
+</table>}
+
+
+
+<script src="~/wwwroot/js/woocommerce2916.js"></script>
+
+<script type="text/javascript">
+    function functionConfirm(event, id) {
+        swal({
+            title: 'Thông báo',
+            text: "Bạn chắc chắn muốn xóa sản phẩm này",
+            type: 'warning',
+            showCancelButton: true,
+            cancelButtonText: 'Hủy',
+            cancelButtonClass: 'btn btn-danger',
+            showConfirmButton: true,
+            confirmButtonText: 'Đồng ý',
+            confirmButtonClass: 'btn btn-success'
+        }, function (isConfirm) {
+            if (isConfirm) {
+                $("#deleteSP-" + id).submit();
+
+                return true;
+            } else {
+                return false;
+            }
+        });
+        return false;
+    }
+</script>
+
+<script type="text/javascript">
+    function functionConfirmDeleteCart(event) {
+        swal({
+            title: 'Thông báo',
+            text: "Bạn chắc chắn muốn xóa tất cả sản phẩm này khỏi giỏ hàng",
+            type: 'warning',
+            showCancelButton: true,
+            cancelButtonText: 'Hủy',
+            cancelButtonClass: 'btn btn-danger',
+            showConfirmButton: true,
+            confirmButtonText: 'Đồng ý',
+            confirmButtonClass: 'btn btn-success'
+        }, function (isConfirm) {
+            if (isConfirm) {
+                $('#delete-cart').submit();
+                return true;
+            } else {
+                return false;
+            }
+        });
+        return false;
+    }
+</script>
+
+<script src="~/wwwroot/js/jquery-3.5.1.slim.min.js"></script>
+<script src="~/wwwroot/js/woocommerce2916.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        console.log("Hello");
+        loadData();
+    });
+
+    $(".plus").click(function () {
+        currenqty = $(".qty").val()
+        $(".qty").val(parseFloat(currenqty) + 1)
+        $("#formcart").submit()
+    })
+    $(".minus").click(function () {
+        currenqty = $(".qty").val()
+        $(".qty").val(parseFloat(currenqty) - 1)
+        $("#formcart").submit()
+    })
+    const loadData = async () => {
+        console.log("Hello1");
+        try {
+            const res = await fetch(
+                "/GioHang/Index"
+            );
+            const data = await res.json();
+            console.log(data);
+
+        } catch (error) {
+            console.error(error);
+        }
+
+    }
+</script>
+
+
+
