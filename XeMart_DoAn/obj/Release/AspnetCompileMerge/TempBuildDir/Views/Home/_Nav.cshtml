@@ -1,0 +1,28 @@
+﻿@model IEnumerable<XeMart_DoAn.Models.DanhMucSP>
+
+@foreach (var item in Model)
+{
+<li class="pcmayin">
+    <a href="@Url.Action("XemSanPhamTheoDanhMuc", "SanPham", new { id = item.MaDM })">
+        
+        <span>@item.TenDM</span>
+    </a>
+    <div class="navmwg PC-mayin">
+
+        @if (item.TenDM == "Điện thoại")
+        {
+            
+            Html.RenderAction("HSX", "Home");
+
+        }
+        else
+        {
+
+        }
+
+
+
+
+    </div>
+</li>
+}

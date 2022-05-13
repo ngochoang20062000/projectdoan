@@ -1,0 +1,77 @@
+﻿@model IEnumerable<XeMart_DoAn.Models.MauSac>
+<style>
+    .nav {
+        width: 150px;
+        height: 50px;
+        line-height: 50px;
+        background-color: white;
+    }
+
+        .nav ul .ul li {
+            display: inline-block;
+            border-right: thin solid white;
+        }
+
+            .nav ul .ul li a {
+                text-decoration: none;
+                color: white;
+                padding: 0px 20px;
+                font-size: 18px;
+                font-weight: bold;
+                display: inline-block;
+            }
+
+            .nav ul .ul li:last-child {
+                border-right: none;
+            }
+
+            .nav ul .ul li:hover {
+                background-color: white;
+            }
+
+    .cha {
+        position: relative;
+    }
+
+    .con {
+        background-color: white;
+        display: none;
+        position: absolute;
+        width: 150px;
+        z-index: 1;
+    }
+
+    .cha:hover .con {
+        display: block;
+    }
+
+    .con li {
+        display: block;
+        border: none;
+    }
+
+        .con li a {
+            width: 100px;
+            text-align: center;
+        }
+</style>
+<nav class="nav">
+    <ul class="ul">
+
+        <li class="cha">
+            <a href="#">Lọc theo màu</a>
+            <ul class="con">
+                @foreach (var item in Model)
+                {
+
+                    <li>
+                        <a href="@Url.Action("XemSanPhamTheoMauSac", "SanPham", new { id = item.MaMau })">@item.TenMau</a>
+                    </li>
+
+                }
+
+            </ul>
+        </li>
+
+    </ul>
+</nav>

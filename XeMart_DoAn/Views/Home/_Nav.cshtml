@@ -1,0 +1,43 @@
+﻿@model IEnumerable<XeMart_DoAn.Models.DanhMucSP>
+
+@foreach (var item in Model)
+{
+<li class="pcmayin">
+    <a href="@Url.Action("XemSanPhamTheoDanhMuc", "SanPham", new { id = item.MaDM })">
+        @if (item.TenDM == "Điện thoại")
+        {
+            <i><img src="https://cdn.tgdd.vn//content/icon-phone-96x96-2.png" style="height:20px;margin-top:3px" /></i>
+        }
+        @if (item.TenDM == "Máy tính")
+        {
+            <i><img src="https://cdn.tgdd.vn//content/icon-laptop-96x96-1.png" style="height: 20px; margin-top: 3px" /></i>
+        }
+        @if (item.TenDM == "Đồng hồ")
+        {
+            <i><img src="https://cdn.tgdd.vn//content/icon-smartwatch-96x96-1.png" style="height: 20px; margin-top: 3px" /></i>
+        }
+        @if (item.TenDM == "Đồ chơi")
+        {
+            <i><img src="https://cdn.tgdd.vn//content/icon-tablet-96x96-1.png" style="height: 20px; margin-top: 3px" /></i>
+        }
+        @if (item.TenDM == "Đồ điện tử")
+        {
+            <i><img src="https://cdn.tgdd.vn//content/icon-pc-96x96.png" style="height: 20px; margin-top: 3px" /></i>
+        }
+        <span>@item.TenDM</span>
+    </a>
+    <div class="navmwg PC-mayin">
+
+        @if (item.TenDM == "Điện thoại")
+        {
+            
+            Html.RenderAction("HSX", "Home");
+
+        }
+        else
+        {
+
+        }
+    </div>
+</li>
+}

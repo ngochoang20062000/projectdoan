@@ -1,0 +1,115 @@
+﻿@model PagedList.IPagedList<XeMart_DoAn.Models.DanhMucSP>
+@using PagedList.Mvc;
+
+@{ ViewBag.Title = "Index";
+                Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml"; 
+    
+    }
+
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-md-12 grid-margin">
+            <div class="d-flex justify-content-between flex-wrap">
+                <div class="d-flex align-items-end flex-wrap">
+                    <div class="mr-md-3 mr-xl-5">
+                        <h2>Xin chào, Admin</h2>
+                        <div class="d-flex">
+                            <i class="mdi mdi-home text-muted hover-cursor"></i>
+                            <p class="text-muted mb-0 hover-cursor">&nbsp;/&nbsp;Quản lý danh mục&nbsp;&nbsp;</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                
+                <a href="@Url.Action("Create","DanhMucSPs")">
+                    <span class="menu-title btn btn-primary">Thêm danh mục</span>
+                </a>
+                @if (ViewBag.Error != null)
+                {
+    <div class="alert alert-danger">@ViewBag.Error</div>}
+            <div class="table-responsive pt-3">
+                <table id="recent-purchases-listing" class="table table-bordered">
+                    <thead>
+                        <tr>
+
+                            <th>
+                                Mã danh mục
+                            </th>
+                            <th>
+                                Tên danh mục
+                            </th>
+                            <th>
+                                Hành động
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaDM)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenDM)
+                </td>
+                <td>
+                    <div class="d-flex justify-content-center">
+                        <a class="nav-link" href="@Url.Action("Edit", "DanhMucSPs", new { id = item.MaDM })">
+                            <span class="menu-title btn btn-wd btn-info pl-3 pr-3 pt-2 pb-2">Cập nhật</span>
+                        </a>
+
+                        <form class="d-flex align-items-center" id="category-@item.MaDM" method="post" action="@Url.Action("DeleteConfirmedCustom", "DanhMucSPs", new { id = item.MaDM })">
+                            <button type="submit" class="menu-title btn btn-wd btn-danger pl-3 pr-3 pt-2 pb-2" onclick="return functionConfirm(this,@item.MaDM)">Xóa</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+}
+                    </tbody>
+                </table>
+               
+                    
+                        
+                            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions()
+                            {
+
+                                LiElementClasses = new string[] { "page-number" },
+                                UlElementClasses = new string[] { "page-numbers", "nav-pagination", "links", "text-center" }
+                            })
+                        
+                    
+                    
+                    
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+<script type="text/javascript">function functionConfirm(event,id) {
+        swal({
+            title: 'Thông báo',
+            text: "Bạn chắc chắn muốn xóa danh mục này ?",
+            type: 'warning',
+            showCancelButton: true,
+            cancelButtonText: 'Hủy',
+            cancelButtonClass: 'btn btn-danger',
+            showConfirmButton: true,
+            confirmButtonText: 'Đồng ý',
+            confirmButtonClass: 'btn btn-success'
+        }, function (isConfirm) {
+            if (isConfirm) {
+                $('#category-'+id).submit();
+                return true;
+            } else {
+                return false;
+            }
+        });
+        return false;
+    }</script>

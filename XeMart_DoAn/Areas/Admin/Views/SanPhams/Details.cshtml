@@ -1,0 +1,188 @@
+﻿@model XeMart_DoAn.Models.SanPham
+
+@{ ViewBag.Title = "Details";
+                Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml"; }
+
+<div class="content-wrapper" style="margin-left:140px">
+    <div class="row col-xl-12 ml-1">
+        <div class="col-md-12 grid-margin">
+            <div class="d-flex justify-content-between flex-wrap">
+                <div class="d-flex align-items-end flex-wrap">
+                    <div class="mr-md-3 mr-xl-5">
+                        <h2>Xin chào, Admin</h2>
+                        <div class="d-flex">
+                            <i class="mdi mdi-home text-muted hover-cursor"></i>
+                            <p class="text-muted mb-0 hover-cursor">&nbsp;/&nbsp;Quản lý sản phẩm&nbsp;&nbsp;/&nbsp;Thông tin chi tiết sản phẩm</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-12 grid-margin">
+        <div class="card" style="width:1000px">
+            <div class="card-body">
+                <form class="form-sample">
+                    <div class="row col-xl-12 ml-1">
+                        <div class="col-md-6">
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-3 col-form-label">Hình ảnh:</label>
+                                <div class="col-sm-9">
+                                    @{ //Lấy đường dẫn file ảnh
+                                        string ImagePath = "~/wwwroot/images/" + Model.HinhAnh; }
+                                    <img src="@Url.Content(ImagePath)" width="200" class="" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-3 col-form-label">Tên DM:</label>
+                                <div class="col-sm-9">
+                                    <label class="col-form-label"> @Html.DisplayFor(model => model.DanhMucSP.TenDM)</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row col-xl-12 ml-1">
+                        <div class="col-md-6">
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-3 col-form-label">Giá:</label>
+                                <div class="col-sm-9">
+                                    <label class="col-form-label">@String.Format("{0:#,###}", Model.Gia) đ</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-3 col-form-label">Tên sản phẩm:</label>
+                                <div class="col-sm-9">
+                                    <label class="col-form-label">  @Html.DisplayFor(model => model.TenSP)</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row col-xl-12 ml-1">
+                        <div class="col-md-6">
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-3 col-form-label">Số lượng tồn:</label>
+                                <div class="col-sm-9">
+                                    <label class="col-form-label">@Html.DisplayFor(model => model.SoLuongTon)</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-3 col-form-label">Tên HSX:</label>
+                                <div class="col-sm-9">
+                                    <label class="col-form-label">@Html.DisplayFor(model => model.HangSanXuat.TenHSX)</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row col-xl-12 ml-1">
+                        <div class="col-md-6">
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-3 col-form-label">Tình trạng:</label>
+                                <div class="col-sm-9">
+                                    <label class="col-form-label">@Html.DisplayFor(model => model.TinhTrang)</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-3 col-form-label">Màn hình:</label>
+                                <div class="col-sm-9">
+                                    <label class="col-form-label">@Html.DisplayFor(model => model.ManHinh)</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row col-xl-12 ml-1">
+                        <div class="col-md-6">
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-3 col-form-label">HĐH:</label>
+                                <div class="col-sm-9">
+                                    <label class="col-form-label"> @Html.DisplayFor(model => model.HDH)</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-3 col-form-label">CPU:</label>
+                                <div class="col-sm-9">
+                                    <label class="col-form-label">@Html.DisplayFor(model => model.CPU)</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div><div class="row col-xl-12 ml-1">
+                        <div class="col-md-6">
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-3 col-form-label">Camera:</label>
+                                <div class="col-sm-9">
+                                    <label class="col-form-label">@Html.DisplayFor(model => model.Camera)</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-3 col-form-label">Pin:</label>
+                                <div class="col-sm-9">
+                                    <label class="col-form-label">@Html.DisplayFor(model => model.Pin)</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row col-xl-12 ml-1">
+                        <div class="col-md-6">
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-3 col-form-label">Ram:</label>
+                                <div class="col-sm-9">
+                                    <label class="col-form-label">@Html.DisplayFor(model => model.Ram)</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-3 col-form-label">Bộ nhớ trong:</label>
+                                <div class="col-sm-9">
+                                    <label class="col-form-label">@Html.DisplayFor(model => model.BoNhoTrong)</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div><div class="row col-xl-12 ml-1">
+                        <div class="col-md-6">
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-3 col-form-label">Thẻ nhớ ngoài:</label>
+                                <div class="col-sm-9">
+                                    <label class="col-form-label">@Html.DisplayFor(model => model.TheNhoNgoai)</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-3 col-form-label">Camera trước:</label>
+                                <div class="col-sm-9">
+                                    <label class="col-form-label"> @Html.DisplayFor(model => model.CameraTruoc)</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group row col-xl-12 ml-1">
+                                <label class="col-sm-3 col-form-label">Tên màu:</label>
+                                <div class="col-sm-9">
+                                    <label class="col-form-label"> @Html.DisplayFor(model => model.MauSac.TenMau)</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <a class="nav-link" href="@Url.Action("Index","SanPhams")">
+                            <span class="menu-title btn btn-outline-primary btn-fw ">Quay lại</span>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
