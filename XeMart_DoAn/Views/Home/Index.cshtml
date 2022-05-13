@@ -12,7 +12,6 @@
         display: flex;
 
     }
-
         .pagination-container ul li {
             margin-left: 3px;
             padding: 0;
@@ -23,11 +22,9 @@
             -webkit-border-radius: 100%;
             border-radius: 100%;
         }
-
             .pagination-container ul li:hover {
                 background-color: orange;
             }
-
     .active a {
         color: white;
     }
@@ -143,7 +140,7 @@
 
     <div class="box-common__link" data-size="3">
         <form class="woocommerce-ordering" method="post" enctype='multipart/form-data' action="@Url.Action("Index", "Home")">
-            <select name="loc" class="orderby" aria-label="Đơn hàng của cửa hàng" style="height:40px">
+            <select name="loc" class="orderby" aria-label="Đơn hàng của cửa hàng" style="height:30px">
                 <option name="loc" value="menu_order" selected="selected">Thứ tự mặc định</option>
                 @if (ViewBag.Loc == "tang")
                 {
@@ -198,9 +195,7 @@
                         </p>
                         <p class="item-rating-total">13</p>
                     </div>
-
                 </a>
-
             </div>}
     </div>
     <br />

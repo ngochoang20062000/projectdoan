@@ -3,7 +3,7 @@
 @foreach (var item in Model)
 {
 <li class="pcmayin">
-    <a href="@Url.Action("XemSanPhamTheoDanhMuc", "SanPham", new { id = item.MaDM })">
+    <a style="cursor:pointer">
         @if (item.TenDM == "Điện thoại")
         {
             <i><img src="https://cdn.tgdd.vn//content/icon-phone-96x96-2.png" style="height:20px;margin-top:3px" /></i>

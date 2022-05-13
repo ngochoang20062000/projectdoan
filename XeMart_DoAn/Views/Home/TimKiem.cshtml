@@ -2,13 +2,11 @@
 @using PagedList.Mvc;
 @{ ViewBag.Title = "TimKiem";
     Layout = "~/Views/Shared/_Layout.cshtml"; }
-
 <style>
     .pagination-container ul {
         text-align: center;
         display: flex;
     }
-
         .pagination-container ul li {
             text-align: center;
             width: 60px;
@@ -18,15 +16,12 @@
             height: 40px;
             border-radius: 20px;
         }
-
             .pagination-container ul li:hover {
                 background-color: orange;
             }
-
     .active a {
         color: white;
     }
-
     .active {
         background-color: cornflowerblue;
     }
@@ -122,8 +117,6 @@ else
 <div class="sub-banner">
     <a aria-label="slide" data-cate="0" data-place="1593" href="https://www.topzone.vn/tekzone/topzone-tung-bung-khai-truong-cua-hang-moi-vao-dau-thang-4-1422409" onclick="jQuery.ajax({ url: '/bannertracking?bid=52278&r='+ (new Date).getTime(), async: true, cache: false });"><img src="//cdn.tgdd.vn/2022/03/banner/1200-60-1200x60-9.png" alt="topzone"></a>
 </div>
-
-
 <div class="prd-promo has-banner" style=background-color:#BDEDFE data-html-id="3429">
     <div class="prd-promo__top clearfix">
         <a data-cate="0" data-place="1867" href="https://www.thegioididong.com/mua-online-gia-re#game"
@@ -132,14 +125,11 @@ else
                  alt="TGDD Desk" width="1200" height="90">
         </a>
     </div>
-
 </div>
 <div class="watched"></div>
 <div class="box-common__top clearfix">
     <h2 class="box-common__title">&#x110;I&#x1EC6;N THO&#x1EA0;I N&#x1ED4;I B&#x1EAC;T NH&#x1EA4;T</h2>
-
     <div class="box-common__link" data-size="3">
-        
     </div>
 </div>
 <div class="box-common__main">
@@ -173,14 +163,11 @@ else
                         </p>
                         <p class="item-rating-total">13</p>
                     </div>
-
                 </a>
-
             </div>}
     </div>
     
 </div>
-
 <div class="container">
     <nav class="woocommerce-pagination">
         @Html.PagedListPager(Model, page => Url.Action("TimKiem", new { ViewBag.strSearch, page }), new PagedListRenderOptions()
@@ -188,8 +175,6 @@ else
             LiElementClasses = new string[] { "page-number" },
             UlElementClasses = new string[] { "page-numbers", "nav-pagination", "links", "text-center" }
         })
-
-
     </nav>
 </div>}
 

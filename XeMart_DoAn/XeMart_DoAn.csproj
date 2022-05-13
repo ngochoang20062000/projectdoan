@@ -159,7 +159,6 @@
     <Compile Include="Models\MauSac.cs" />
     <Compile Include="Models\PhanQuyen.cs" />
     <Compile Include="Models\SanPham.cs" />
-    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\TaiKhoan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

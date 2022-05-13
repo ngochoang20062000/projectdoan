@@ -1,7 +1,8 @@
-namespace XeMart_DoAn.Models
+﻿namespace XeMart_DoAn.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -16,10 +17,12 @@ namespace XeMart_DoAn.Models
         }
 
         [Key]
+        [DisplayName("Mã quyền")]
         public int MaQuyen { get; set; }
 
         [Required]
         [StringLength(50)]
+        [DisplayName("Tên quyền")]
         public string TenQuyen { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

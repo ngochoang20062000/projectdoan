@@ -15,9 +15,8 @@ namespace XeMart_DoAn.Areas.Admin.Controllers
         {
             var doanhThu = db.Chi_Tiet_Gio_Hang.ToList();
             var hoadon = db.HoaDons.ToList();
-            var taikhoan = db.TaiKhoans.Where(s => s.MaQuyen == 3).ToList();
+            var taikhoan = db.TaiKhoans.Where(s => s.MaQuyen == 2).ToList();
             var sanpham = db.SanPhams.ToList();
-
             double doanht = 0;
             int slton = 0;
             int slDaBan = 0;
@@ -31,8 +30,7 @@ namespace XeMart_DoAn.Areas.Admin.Controllers
                 slton += item.SoLuongTon;
             }
             ViewBag.DoanhThu = doanht;
-            ViewBag.TongSP = (slton+slDaBan);
-            
+            ViewBag.TongSP = slton-slDaBan;
             ViewBag.SLBan = slDaBan;
             ViewBag.SLKhach = taikhoan.Count;
             return View();

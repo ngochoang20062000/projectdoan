@@ -2,6 +2,7 @@ namespace XeMart_DoAn.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -16,8 +17,10 @@ namespace XeMart_DoAn.Models
         }
 
         [Key]
+        [DisplayName("Mã màu")]
         public int MaMau { get; set; }
 
+        [DisplayName("Tên màu")]
         [Required]
         [StringLength(80)]
         public string TenMau { get; set; }

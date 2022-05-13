@@ -35,7 +35,7 @@ namespace XeMart_DoAn.Areas.Admin.Controllers
                     Session["AnhAdmin"] = user.FirstOrDefault().Anh;
                     Session["LoaiAdmin"] = user.FirstOrDefault().MaQuyen;
                     Session["idAdmin"] = user.FirstOrDefault().MaTK;
-                    if (user.FirstOrDefault().MaQuyen == 3)
+                    if (user.FirstOrDefault().MaQuyen == 2)
                     {
                         ModelState.AddModelError("", "Bạn Không Có Quyền Vào ADMIN!!");
                     }

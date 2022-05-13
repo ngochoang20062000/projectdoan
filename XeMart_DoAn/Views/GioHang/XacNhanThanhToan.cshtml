@@ -4,8 +4,6 @@
                 XeMart_DoAn.Models.TaiKhoan taiKhoan = new XeMart_DoAn.Models.TaiKhoan();
                 decimal Tien = 0;
                 XeMart_DoAn.Models.HoaDon hoaDon = ViewBag.HoaDon; }
-
-
 <div class="watched"></div>
 <div class="container mt-5">
     <div class="row">
@@ -23,14 +21,12 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-
                         Tien += item.sanPham.Gia * item.soLuong;
                         String imagePath = "~/wwwroot/images/" + item.sanPham.HinhAnh;
                         <tr>
                             <th scope="row">@item.sanPham.TenSP</th>
                             <td> @item.soLuong</td>
                             <td><img width="200" src="@Url.Content(imagePath)" /></td>
-
                         </tr>
                     }
                 </tbody>
@@ -53,7 +49,7 @@
                 <a href="#" class="list-group-item list-group-item-action disabled">Phương thức thanh toán: @hoaDon.HinhThucThanhToan</a>
             </div>
             <div class="form-row place-order mt-3 ml-1">
-                <a href="@Url.Action("index","Home")"><button type="submit" class="button alt" name="woocommerce_checkout_place_order">Tiếp tục mua hàng</button></a>
+                <a href="@Url.Action("index","Home")">Tiếp tục mua hàng</a>
             </div>
         </div>
     </div>
