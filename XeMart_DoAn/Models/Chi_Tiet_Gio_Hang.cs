@@ -1,7 +1,8 @@
-namespace XeMart_DoAn.Models
+﻿namespace XeMart_DoAn.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -20,6 +21,7 @@ namespace XeMart_DoAn.Models
 
         public int SoLuongMua { get; set; }
 
+        [DisplayName("Giá sản phẩm")]
         [Column(TypeName = "money")]
         public decimal GiaSP { get; set; }
 

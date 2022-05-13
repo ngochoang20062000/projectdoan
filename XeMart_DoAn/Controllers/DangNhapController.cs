@@ -112,7 +112,6 @@ namespace XeMart_DoAn.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-       
         public ActionResult DangKy(TaiKhoan dangky)
         {
             if (ModelState.IsValid)
@@ -130,7 +129,7 @@ namespace XeMart_DoAn.Controllers
                     user.DiaChi = dangky.DiaChi;
                     user.SoDienThoai = dangky.SoDienThoai;
                     user.TinhTrang = true;
-                    user.MaQuyen = 3;
+                    user.MaQuyen = 2;
                     db.TaiKhoans.Add(user);
                     db.SaveChanges();
                     return RedirectToAction("Login");

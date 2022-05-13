@@ -1,5 +1,4 @@
 ﻿@model XeMart_DoAn.Models.TaiKhoan
-
 @{ ViewBag.Title = "DangNhap";
     Layout = "~/Views/Shared/_Layout.cshtml"; }
 <style>
@@ -10,7 +9,6 @@
         padding-left: 20px;
         border: 1px solid black;
     }
-
     .form-control2 {
         width: 300px;
         height: 50px;
@@ -18,7 +16,6 @@
         padding-left: 20px;
         border: 1px solid black;
     }
-
     .mdl-textfield__label {
         margin-left: 400px;
     }
@@ -35,20 +32,14 @@
     <!--Email-->
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
         <label class="mdl-textfield__label" for="sample3">Email</label>
-
         @Html.TextBoxFor(m => m.Email, "", new { @class = "form-control1", @placeholder = "Email" })
-
-
     </div>
     <br />
     <br />
     <!--Password-->
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
         <label class="mdl-textfield__label" for="sample3">Password</label>
-
         @Html.PasswordFor(m => m.MatKhau, new { @class = "form-control2", @placeholder = "Password" })
-
-
     </div>
     <br />
     <div class="form-group " style="margin-left:520px">
@@ -59,22 +50,20 @@
         Không có tài khoản?
         <a href="@Url.Action("DangKy", "DangNhap")" class="text-primary" style="color:blue;text-decoration:none">Đăng ký</a>
     </p>
-
+    <br />
     <!--CheckBox-->
     @Html.AntiForgeryToken() if (ViewBag.error != null)
     {
         <div class="form-group">
-            <div class="alert alert-danger" style="margin-top:0px;background-color:red;height:45px;color:black;vertical-align:middle;padding-top:10px;padding-bottom:10px;font-size:18px;color:white">
+            <div class="alert alert-danger" style="text-align:center;margin-top:0px;height:45px;vertical-align:middle;padding-top:10px;padding-bottom:10px;font-size:18px;color:red">
                 @ViewBag.error
             </div>
         </div>
     }
 }
-
-
-    <script src="../../vendors/base/vendor.bundle.base.js"></script>
-    <script src="../../js/off-canvas.js"></script>
-    <script src="../../js/hoverable-collapse.js"></script>
-    <script src="../../js/template.js"></script>
+<script src="../../vendors/base/vendor.bundle.base.js"></script>
+<script src="../../js/off-canvas.js"></script>
+<script src="../../js/hoverable-collapse.js"></script>
+<script src="../../js/template.js"></script>
 
 

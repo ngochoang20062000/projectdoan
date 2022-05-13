@@ -20,7 +20,6 @@ namespace XeMart_DoAn.Models
         public virtual DbSet<MauSac> MauSacs { get; set; }
         public virtual DbSet<PhanQuyen> PhanQuyens { get; set; }
         public virtual DbSet<SanPham> SanPhams { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

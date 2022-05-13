@@ -101,8 +101,6 @@ namespace XeMart_DoAn.Controllers
         [HttpPost]
         public RedirectToRouteResult SuaSoLuong(int MaSP, int SoLuong)
         {
-
-
             int MaGH = -1;
             if (Session["MaGH"] != null)
             {
@@ -231,7 +229,7 @@ namespace XeMart_DoAn.Controllers
                     tk.HoTen = HoTen;
                     tk.Email = email;
                     tk.DiaChi = diachi;
-                    tk.MaQuyen = 3;
+                    tk.MaQuyen = 2;
                     tk.MatKhau = matkhau;
                     tk.TinhTrang = true;
                     db.TaiKhoans.Add(tk);

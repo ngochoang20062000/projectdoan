@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" />
-    <title>Thegioididong.com - Điện thoại, Laptop, Phụ kiện, Đồng hồ chính hãng</title>
+    <title>Thegioididong.com</title>
     <meta name="keywords" content="Thế giới di động, Thegioididong, điện thoại di động, dtdd, smartphone, tablet, máy tính bảng, laptop, máy tính xách tay, phụ kiện, smartwatch, đồng hồ, tin công nghệ" />
     <meta name="description" content="Hệ thống bán lẻ điện thoại di động, smartphone, máy tính bảng, tablet, laptop, phụ kiện, smartwatch, đồng hồ chính hãng mới nhất, giá tốt, dịch vụ khách hàng được yêu thích nhất VN" />
     <meta property="og:title" content="Thegioididong.com - Điện thoại, Laptop, Phụ kiện, Đồng hồ chính hãng" />
@@ -13265,14 +13265,11 @@
                 <a href="@Url.Action("Index", "Home")" class="header__logo">
                     <i class="icon-logo"></i>
                 </a>
-
-
                 <div class="bordercol"></div>
                 <a href="javascript:void(0)" class="header__address" onclick="OpenLocation()">
                     Xem giá, khuyến mãi tại
                     <span data-province="3" data-district="0" data-ward="0">H&#x1ED3; Ch&#xED; Minh</span>
                 </a>
-
                 <form method="post" action="@Url.Action("TimKiem", "Home")" class="header__search">
                     <input id="skw" type="text" class="input-search" placeholder="Nhập từ khóa tìm kiếm..." name="strSearch" autocomplete="off" maxlength="100">
                     <button type="submit" style="cursor: pointer;">
@@ -13292,7 +13289,7 @@
                 </a>
                 @if (Session["Email"] != null)
                 {
-                    <div>
+                    <div style="display: flex;align-items: center;">
                         <a href="@Url.Action("ThongTinTaiKhoan", "DangNhap", new { id = Session["idUser"] })" class="header-cart-link is-small">
                             <span>
                                 @if (Session["Anh"] != null)
@@ -13302,9 +13299,8 @@
                                     <img class="cart-img-icon rounded-pill" style="width:30px; height:30px;border-radius:20px" alt="Đăng nhập" src="@Url.Content(img)" />
                                 }
                             </span>
-
                         </a>
-                        <a>
+                        <a href="@Url.Action("ThongTinTaiKhoan", "DangNhap", new { id = Session["idUser"] })" style="color:white">
                             @if (Session["HoTen"] != null)
                             {
                                 @Session["HoTen"] }
@@ -13314,7 +13310,7 @@
                         </a>
                     </div>
                     <div>
-                        <a href="@Url.Action("DangXuat", "DangNhap")" class="dropdown-item" title="Đăng xuất">Đăng xuất</a>
+                        <a style="color:white" href="@Url.Action("DangXuat", "DangNhap")" class="dropdown-item" title="Đăng xuất">Đăng xuất</a>
                     </div>
                 }
                 else
